@@ -16,11 +16,11 @@
         controllerAs: 'root'
       })
 
-      .state('root.create', {
-        url: '/create',
-        templateUrl: 'app/main/index.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+      .state('root.location', {
+        url: ':id',
+        templateUrl: 'app/location/index.html',
+        controller: 'LocationController',
+        controllerAs: 'location'
       });
 
     $urlRouterProvider.otherwise('/');

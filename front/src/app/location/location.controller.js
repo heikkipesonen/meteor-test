@@ -3,10 +3,10 @@
 
   angular
     .module('lahiruoka')
-    .controller('MainController', MainController);
+    .controller('LocationController', LocationController);
 
   /** @ngInject */
-  function MainController() {
+  function LocationController() {
     var vm = this;
   }
 })();

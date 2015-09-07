@@ -2,6 +2,7 @@
   "name": "front",
   "version": "0.0.0",
   "dependencies": {
+    "Ionicons": "ionicons#~2.0.1",
     "angular": "~1.4.0",
     "angular-animate": "~1.4.0",
     "angular-cookies": "~1.4.0",

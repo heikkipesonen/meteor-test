@@ -6,10 +6,11 @@
     .controller('RootController', RootController);
 
   /** @ngInject */
-  function RootController($scope, mapService) {
+  function RootController($scope, mapService, $state) {
     var vm = this;
     vm.$scope = $scope;
     vm.mapService = mapService;
+    vm.$state = $state;
 
     vm.bindListeners();
   }
@@ -24,7 +25,7 @@
     	});
 
     	google.maps.event.addListener(marker, 'click', function (evt){
-    		console.log(marker, 'clicked');
+    		vm.$state.go('root.location', {id:marker.id});
     	});
     });
   };
