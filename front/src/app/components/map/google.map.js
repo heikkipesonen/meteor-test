@@ -20,13 +20,21 @@
 		})
 
 
-		.directive('googleMap', function($googleMapConfig, mapService, $rootScope){
+		.directive('googleMap', function($googleMapConfig, mapService, $rootScope, $q){
 			return {
 				restrict:'AE',
 				link:function($scope, $element){
 					var map  = new google.maps.Map($element[0], $googleMapConfig);
+					var ready = $q.defer();
+
 					mapService.setMap(map);
+
 					$rootScope.$broadcast('map.init');
+					$rootScope.mapReady = ready.promise;
+
+					google.maps.event.addListenerOnce(map, 'idle', function(){
+  					ready.resolve();
+					});
 				}
 			};
 		});

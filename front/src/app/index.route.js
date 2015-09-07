@@ -10,14 +10,14 @@
     $stateProvider
 
       .state('root', {
-        abstract: true,
+        url: '/',
         templateUrl: 'app/root/index.html',
         controller: 'RootController',
         controllerAs: 'root'
       })
 
-      .state('root.home', {
-        url: '/',
+      .state('root.create', {
+        url: '/create',
         templateUrl: 'app/main/index.html',
         controller: 'MainController',
         controllerAs: 'main'

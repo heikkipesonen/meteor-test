@@ -6,7 +6,8 @@
     .controller('RootController', RootController);
 
   /** @ngInject */
-  function RootController() {
+  function RootController(mapService) {
     var vm = this;
+    vm.mapService = mapService;
   }
 })();
