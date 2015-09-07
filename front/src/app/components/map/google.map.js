@@ -20,21 +20,23 @@
 		})
 
 
-		.directive('googleMap', function($googleMapConfig, mapService, $rootScope, $q){
+		.directive('googleMap', function($googleMapConfig, mapService){
 			return {
+				scope:{},
 				restrict:'AE',
 				link:function($scope, $element){
 					var map  = new google.maps.Map($element[0], $googleMapConfig);
-					var ready = $q.defer();
-
 					mapService.setMap(map);
+					// google.maps.event.addListenerOnce(map, 'idle', mapService.ready);
 
-					$rootScope.$broadcast('map.init');
-					$rootScope.mapReady = ready.promise;
-
-					google.maps.event.addListenerOnce(map, 'idle', function(){
-  					ready.resolve();
+					google.maps.event.addListener(map, 'click', function (evt) {
+						$scope.$emit('map.click', evt);
 					});
+
+					google.maps.event.addListener(map, 'rightclick', function (evt) {
+						$scope.$emit('map.click', evt);
+					});
+
 				}
 			};
 		});

@@ -1,6 +1,6 @@
 $view-transition : 0.4s;
 
-.view{
+.view {
 	position: absolute;
 	top:0;
 	left:0;
@@ -11,107 +11,107 @@ $view-transition : 0.4s;
 }
 
 
-.view-animate{
-	&.ng-animate{
+.view-animate {
+	&.ng-animate {
 		transition: $view-transition !important;
 	}
 
 
-	&.ng-animate{
+	&.ng-animate {
 		transition: $view-transition !important;
 	}
 
-	&.ng-enter{
+	&.ng-enter {
 		opacity:0 !important;
 		z-index: 2;
 	}
 
-	&.ng-enter-active{
+	&.ng-enter-active {
 		opacity:1 !important;
 	}
 
-	&.ng-leave{
+	&.ng-leave {
 		opacity: 1 !important;
 		z-index: 1;
 	}
 
-	&.ng-leave-active{
+	&.ng-leave-active {
 		opacity: 0 !important;
 		z-index: 1;
 	}
 
 }
 
-.animation-direction-back .view-animate{
-	&.ng-animate{
+.animation-direction-back .view-animate {
+	&.ng-animate {
 		transition: $view-transition !important;
 	}
 
-	&.ng-enter{
+	&.ng-enter {
 		transform: translate3d(-100%, 0,0) !important;
 		z-index: 2;
 	}
 
-	&.ng-enter-active{
+	&.ng-enter-active {
 		transform: translate3d(0, 0,0) !important;
 	}
 
-	&.ng-leave-active{
+	&.ng-leave-active {
 		transform: translate3d(0, 0,0) !important;
 		z-index: 1;
 	}
 
-	&.ng-leave{
+	&.ng-leave {
 		transform: translate3d(100%, 0,0) !important;
 		z-index: 1;
 	}
 }
 
-.animation-direction-up .view-animate{
-	&.ng-animate{
+.animation-direction-up .view-animate {
+	&.ng-animate {
 		transition: $view-transition !important;
 	}
 
-	&.ng-enter{
+	&.ng-enter {
 		transform: translate3d(0,-100%,0) !important;
 		z-index: 2;
 	}
 
-	&.ng-enter-active{
+	&.ng-enter-active {
 		transform: translate3d(0, 0,0) !important;
 	}
 
-	&.ng-leave-active{
+	&.ng-leave-active {
 		transform: translate3d(0, 0,0) !important;
 		z-index: 1;
 	}
 
-	&.ng-leave{
+	&.ng-leave {
 		transform: translate3d(0,100%,0) !important;
 		z-index: 1;
 	}
 }
 
-.animation-direction-down .view-animate{
-	&.ng-animate{
+.animation-direction-down .view-animate {
+	&.ng-animate {
 		transition: $view-transition !important;
 	}
 
-	&.ng-enter{
+	&.ng-enter {
 		transform: translate3d(0,100%,0) !important;
 		z-index: 2;
 	}
 
-	&.ng-enter-active{
+	&.ng-enter-active {
 		transform: translate3d(0, 0,0) !important;
 	}
 
-	&.ng-leave-active{
+	&.ng-leave-active {
 		transform: translate3d(0, 0,0) !important;
 		z-index: 1;
 	}
 
-	&.ng-leave{
+	&.ng-leave {
 		transform: translate3d(0,-100%,0) !important;
 		z-index: 1;
 	}

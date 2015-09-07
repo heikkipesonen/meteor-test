@@ -1,44 +1,44 @@
-(function () {
+(function  () {
 
 	'use strict';
 
 	angular.module('maps')
 
-		.service('mapService', function(MapLayer, mapUtils){
+		.service('mapService', function (MapLayer, mapUtils, $q) {
 			var layer = new MapLayer();
+			var vm = layer;
+			var d = $q.defer();
 
 			angular.extend(layer,{
-				initialized:false,
 
-				listeners:[],
+				listeners: [],
 
-				init:function(){
-
+				ready:  function  () {
+					d.resolve(vm);
 				},
 
-				setMap:function(map){
+				setMap: function (map) {
 					this.map = map;
-					this.items.forEach(function(item){
+					this.items.forEach(function (item) {
 						item.setMap(map);
 					});
-
 					return this;
 				},
 
-				getCenter:function(){
+				getCenter: function () {
 					return this.map.getCenter();
 				},
 
-				getMapBounds:function(){
+				getMapBounds: function () {
 					return mapUtils.toPointBounds( this.map.getBounds() );
 				},
 
-				panTo:function(point){
+				panTo: function (point) {
 					this.map.panTo( mapUtils.toLatLng(point) );
 					return this;
 				},
 
-				on:function(eventName, callback){
+				on: function (eventName, callback) {
 					var e = mapUtils.on(eventName, this.map, callback);
 							e._type = eventName;
 
@@ -46,13 +46,13 @@
 					return e;
 				},
 
-				off:function(eventName){
-					_.forEach( _.filter(this.listeners, {_type:eventName}) , function(eventListener){
+				off: function (eventName) {
+					_.forEach( _.filter(this.listeners, {_type: eventName}) , function (eventListener) {
 						eventListener.remove();
 					});
 				},
 
-				getPixelPosition:function(point){
+				getPixelPosition: function (point) {
 					return mapUtils.getPixelPosition(point, this.map);
 				}
 			});
