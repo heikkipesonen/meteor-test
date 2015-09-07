@@ -1,0 +1,17 @@
+
+[image-loader]{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	transition-duration: 0.4s;
+	transition-property: opacity;
+
+	&.image-loading{
+		opacity:0;
+	}
+
+	&.image-ready{
+		opacity:1;
+	}
+}

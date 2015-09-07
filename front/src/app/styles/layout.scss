@@ -1,0 +1,51 @@
+
+[layout]{
+	display: flex;
+	flex-direction: column;
+}
+
+[layout="row"]{
+	flex-direction: row;
+}
+
+[flex]{
+	flex:1;
+}
+
+@for $i from 1 through 20 {
+	[layout="column"] [flex="#{$i * 5}"] {
+		flex: 0;
+		width: $i*5%;
+	}
+
+	[layout="row"] [flex="#{$i * 5}"] {
+		flex: 0;
+		height: $i*5%;
+	}
+
+}
+
+[text-fit]{
+	display: inline-block;
+	white-space: nowrap;
+}
+
+[layout-align ^= "start"]{
+	align-items: flex-start;
+}
+
+[layout-align ^= "end"]{
+	align-items: flex-end;
+}
+
+[layout-align ^= "center"]{
+	align-items: center;
+}
+
+[layout-align ^= "baseline"]{
+	align-items: baseline;
+}
+
+[layout-align $= "center"]{
+	justify-content: center;
+}
