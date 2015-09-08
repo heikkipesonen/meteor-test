@@ -3,6 +3,7 @@ $hilight-color : #d00 !default;
 .input-container{
 	position: relative;
 	height: 100%;
+	margin-top: 10px;
 	padding-bottom: 20px;
 
 	input{
@@ -46,7 +47,7 @@ label{
 	position: absolute;
 	font-size: 1.2rem;
 	top:50%;
-	margin-top: -5pt;
+	margin-top: -10pt;
 	width: 100%;
 	display: block;
 	left:0;
@@ -68,6 +69,7 @@ input:focus + label, input:active + label, input.has-value + label, input.ng-dir
 	transform: scale(0.8);
 	color: $hilight-color;
 	text-indent: 0px;
+	margin-top: 0;
 }
 
 textarea:focus + label, textarea:active + label, textarea.has-value + label{

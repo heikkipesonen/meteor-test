@@ -1,9 +1,12 @@
 <div class="view view-root">
 	<div class="view-toolbar">
+		<div class="tool" ng-click="root.create()">
+			<i class="ion-ios-plus-outline"></i>
+		</div>
 		<div class="tool">
 			<i class="ion-ios-search"></i>
 		</div>
 	</div>
-	<google-map class="view has-toolbar" ng-click="root.mapClick"></google-map>
+	<google-map class="view has-toolbar"></google-map>
 	<ui-view class="view-root-child"></ui-view>
 </div>

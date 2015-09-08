@@ -1,24 +1,44 @@
-<div class="view">
-	<div class="col-xs-12">
-		<h2 class="text-center">Tila</h2>
+<div class="view sidebar-view">
+	<div class="col-xs-12 sidebar-content">
+
+		<div class="row image-wrapper sidebar-image"
+			image-loader="'http://lorempixel.com/500/400/food'">
+			<h2 class="text-center sidebar-header" ng-bind="location.point.properties.name"></h2>
+		</div>
+
 
 		<div class="col-xs-12">
-			<div class="input-container">
-				<input type="text" ng-model="location.point.name">
+			<div class="input-container col-xs-12">
+				<input type="text" ng-model="location.point.properties.name">
 				<label>Name</label>
 			</div>
 
-			<div class="input-container">
-				<input type="text" ng-model="location.point.something">
-				<label>Jotain</label>
+			<div class="input-container col-xs-12">
+				<input type="text" ng-model="location.point.properties.street">
+				<label>Katuosoite</label>
 			</div>
 
-			<div class="input-container">
-				<input type="text" ng-model="location.point.else">
-				<label>Muuta</label>
+			<div class="input-container col-xs-12 col-sm-6">
+				<input type="text" ng-model="location.point.properties.postcode">
+				<label>Postinumero</label>
 			</div>
 
-			<div class="input-container">
+			<div class="input-container col-xs-12 col-sm-6">
+				<input type="text" ng-model="location.point.properties.city">
+				<label>Postitoimipaikka</label>
+			</div>
+
+			<div class="input-container col-xs-12 col-sm-6">
+				<input type="text" ng-model="location.position[0]">
+				<label>Lat</label>
+			</div>
+
+			<div class="input-container col-xs-12- col-sm-6">
+				<input type="text" ng-model="location.position[1]">
+				<label>Lng</label>
+			</div>
+
+			<div class="input-container col-xs-12">
 				<textarea type="text" ng-model="location.point.description"></textarea>
 				<label>Kuvaus</label>
 			</div>

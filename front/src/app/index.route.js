@@ -10,20 +10,33 @@
     $stateProvider
 
       .state('root', {
-        url: '/',
+        url: '/map',
         templateUrl: 'app/root/index.html',
         controller: 'RootController',
         controllerAs: 'root'
       })
 
       .state('root.location', {
-        url: ':id',
+        url: '/:id',
+        resolve:{
+          location:function ($q, $stateParams, mapService) {
+            var d = $q.defer();
+            var marker = mapService.findMarker($stateParams.id);
+            if (marker) {
+              d.resolve(marker);
+            } else {
+              d.reject();
+            }
+
+            return d.promise;
+          }
+        },
         templateUrl: 'app/location/index.html',
         controller: 'LocationController',
         controllerAs: 'location'
       });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/map');
   }
 
 })();

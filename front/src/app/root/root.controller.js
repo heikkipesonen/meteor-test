@@ -11,23 +11,26 @@
     vm.$scope = $scope;
     vm.mapService = mapService;
     vm.$state = $state;
-
-    vm.bindListeners();
   }
 
+  RootController.prototype.create = function () {
+  	var vm = this;
 
-  RootController.prototype.bindListeners = function () {
-    var vm = this;
+  	var marker = vm.mapService.addMarker({
+  		position:vm.mapService.map.getCenter(),
+  		draggable:true,
+  		properties:{
+  			name:'new place'
+  		}
+  	});
 
-    vm.$scope.$on('map.click', function (evt, mapEvent){
-    	var marker = vm.mapService.addMarker({
-    		position:mapEvent.latLng
-    	});
+		vm.$state.go('root.location', {id:marker.id});
 
-    	google.maps.event.addListener(marker, 'click', function (evt){
-    		vm.$state.go('root.location', {id:marker.id});
-    	});
-    });
+		google.maps.event.addListener(marker, 'click', function () {
+			vm.$state.go('root.location', {id:marker.id});
+		});
+
   };
+
 
 })();

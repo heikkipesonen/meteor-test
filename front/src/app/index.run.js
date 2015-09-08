@@ -6,7 +6,11 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock() {
+  function runBlock($rootScope, $state) {
+
+  	$rootScope.$on('$stateChangeError', function () {
+  		$state.go('root');
+  	});
   }
 
 })();
