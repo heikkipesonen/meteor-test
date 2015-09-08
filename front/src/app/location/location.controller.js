@@ -6,30 +6,25 @@
     .controller('LocationController', LocationController);
 
   /** @ngInject */
-  function LocationController($scope, location, mapUtils, $timeout) {
+  function LocationController($scope, location, mapUtils, $timeout, mapService) {
     var vm = this;
     vm.point = location;
     vm.mapUtils = mapUtils;
+    vm.mapService = mapService;
     vm.$timeout = $timeout;
 
 
     vm.position = [0,0];
-
-    vm.getPosition();
-    console.log(vm);
-    var getPosition = vm.getPosition.bind(vm);
-    google.maps.event.addListener(vm.point, 'drag', getPosition);
-
-    $scope.$on('$destroy', function () {
-    	google.maps.event.removeListener(vm.point, 'drag', getPosition);
-    });
   }
 
+  LocationController.prototype.centerMap = function () {
 
-  LocationController.prototype.getPosition = function () {
-  	var vm = this;
-  	vm.position = vm.mapUtils.toPoint(vm.point.position);
-  	vm.$timeout(function(){});
+
+console.log(this.point.position, this.mapService.map);
+
+
   };
+
+
 
 })();

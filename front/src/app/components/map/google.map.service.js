@@ -6,15 +6,27 @@
 
 		.service('mapService', function (MapLayer, mapUtils, $q) {
 			var layer = new MapLayer();
-			var vm = layer;
-			var d = $q.defer();
+			var ready = $q.defer();
 
 			angular.extend(layer,{
 
+				ready: ready.promise,
+
+				setReady: function(){
+					console.log('erer')
+					ready.resolve(this.map);
+				},
+
 				listeners: [],
 
-				ready:  function  () {
-					d.resolve(vm);
+				addMarker:function(options){
+					var marker = new google.maps.Marker(options);
+							marker.id = options.id ||this.getId();
+							marker.setMap(this.map);
+
+
+					this.items.push( marker );
+					return marker;
 				},
 
 				setMap: function (map) {
@@ -26,15 +38,18 @@
 				},
 
 				getCenter: function () {
-					return this.map.getCenter();
+					return this.map ? mapUtils.toPoint(this.map.getCenter()) : [0,0];
 				},
 
 				getMapBounds: function () {
-					return mapUtils.toPointBounds( this.map.getBounds() );
+					return this.map ? mapUtils.toPointBounds( this.map.getBounds() ) : [[0,0],[0,0]];
 				},
 
 				panTo: function (point) {
-					this.map.panTo( mapUtils.toLatLng(point) );
+					if (this.map){
+						this.map.panTo( mapUtils.toLatLng(point) );
+					}
+
 					return this;
 				},
 

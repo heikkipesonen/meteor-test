@@ -27,7 +27,11 @@
 				link:function($scope, $element){
 					var map  = new google.maps.Map($element[0], $googleMapConfig);
 					mapService.setMap(map);
-					// google.maps.event.addListenerOnce(map, 'idle', mapService.ready);
+
+					google.maps.event.addListenerOnce(map, 'idle', function() {
+						console.log('asdfdsfs')
+						mapService.setReady();
+					});
 
 					google.maps.event.addListener(map, 'click', function (evt) {
 						$scope.$emit('map.click', evt);

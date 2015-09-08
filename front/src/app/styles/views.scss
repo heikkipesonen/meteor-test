@@ -13,34 +13,54 @@ $toolbar-width: 64px;
 
 
 	&.has-toolbar{
-		left:$toolbar-width;
+		bottom:$toolbar-width;
 	}
+
+	.view-content{
+		background-color: white;
+	}
+
+	.view-title{
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
+}
+
+.view-header{
+	height: 0;
+	padding-bottom: 70%;
 }
 
 .view-toolbar {
 	position: absolute;
-	top:0;
+	bottom:0;
 	left:0;
-	width: $toolbar-width;
-	height: auto;
-	bottom: 0;
-	right: auto;
+	right: 0;
+	height: $toolbar-width;
+	top:auto;
 	background-color: #222;
 
 	.tool{
 		line-height: $toolbar-width;
-		width: 100%;
+		width: $toolbar-width;
 		color: white;
 		font-size: $toolbar-width * 0.5;
 		text-align: center;
 		background-color: #333;
 		transition: 0.4s;
 		cursor: pointer;
+		float:left;
 
 		&:hover{
 			background-color: #444;
 		}
 	}
+}
+
+[scroll-y]{
+	overflow: hidden;
+	overflow-y: auto !important;
+	-webkit-overflow-scrolling: touch;
 }
 
 .view-animate {

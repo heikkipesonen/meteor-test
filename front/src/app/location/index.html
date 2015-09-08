@@ -1,48 +1,18 @@
-<div class="view sidebar-view">
-	<div class="col-xs-12 sidebar-content">
+<div class="view" scroll-y>
+	<div class="view-header">
+	</div>
 
-		<div class="row image-wrapper sidebar-image"
-			image-loader="'http://lorempixel.com/500/400/food'">
-			<h2 class="text-center sidebar-header" ng-bind="location.point.properties.name"></h2>
-		</div>
-
-
+	<div class="col-xs-12 view-content">
 		<div class="col-xs-12">
-			<div class="input-container col-xs-12">
-				<input type="text" ng-model="location.point.properties.name">
-				<label>Name</label>
-			</div>
-
-			<div class="input-container col-xs-12">
-				<input type="text" ng-model="location.point.properties.street">
-				<label>Katuosoite</label>
-			</div>
-
-			<div class="input-container col-xs-12 col-sm-6">
-				<input type="text" ng-model="location.point.properties.postcode">
-				<label>Postinumero</label>
-			</div>
-
-			<div class="input-container col-xs-12 col-sm-6">
-				<input type="text" ng-model="location.point.properties.city">
-				<label>Postitoimipaikka</label>
-			</div>
-
-			<div class="input-container col-xs-12 col-sm-6">
-				<input type="text" ng-model="location.position[0]">
-				<label>Lat</label>
-			</div>
-
-			<div class="input-container col-xs-12- col-sm-6">
-				<input type="text" ng-model="location.position[1]">
-				<label>Lng</label>
-			</div>
-
-			<div class="input-container col-xs-12">
-				<textarea type="text" ng-model="location.point.description"></textarea>
-				<label>Kuvaus</label>
-			</div>
+		<div class="time-display">
+			<p>
+				<span ng-bind="location.point.start_datetime | date : 'HH:mm:ss MM.dd.yyyy'"></span>
+				-
+				<span ng-bind="location.point.end_datetime | date : 'HH:mm:ss MM.dd.yyyy'"></span></p>
 		</div>
+		<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
+		<p ng-bind="location.point.description"></p>
+
 		<div class="col-xs-12">
 			<h4 class="sub-header">Tuotteet</h4>
 			<ul>

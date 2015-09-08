@@ -75,10 +75,11 @@ angular.module('maps',[])
 
 			addMarker:function(options){
 				var marker = new google.maps.Marker(options);
-						marker.id = this.getId();
+						marker.id = options.id ||this.getId();
 						marker.setMap(this.map);
 
 				this.items.push( marker );
+
 				return marker;
 			},
 

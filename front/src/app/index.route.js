@@ -10,6 +10,13 @@
     $stateProvider
 
       .state('root', {
+        resolve:{
+          mapData:function ($http){
+            return $http.get('app/data.json').then(function(response){
+              return response.data;
+            });
+          }
+        },
         url: '/map',
         templateUrl: 'app/root/index.html',
         controller: 'RootController',
@@ -19,9 +26,9 @@
       .state('root.location', {
         url: '/:id',
         resolve:{
-          location:function ($q, $stateParams, mapService) {
+          location:function (mapData, $q, $stateParams) {
             var d = $q.defer();
-            var marker = mapService.findMarker($stateParams.id);
+            var marker = _.find(mapData, {id:$stateParams.id});
             if (marker) {
               d.resolve(marker);
             } else {
