@@ -6,14 +6,14 @@
     .controller('RootController', RootController);
 
   /** @ngInject */
-  function RootController($scope, mapService, mapUtils, $state, mapData) {
+  function RootController($scope, mapService, mapUtils, $state, locations) {
     var vm = this;
     vm.$scope = $scope;
     vm.mapService = mapService;
     vm.mapUtils = mapUtils;
     vm.$state = $state;
 
-    vm.setData(mapData);
+    vm.setData(locations);
   }
 
   RootController.prototype.setData = function (data) {

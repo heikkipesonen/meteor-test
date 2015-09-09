@@ -4,31 +4,16 @@
 
 	<div class="col-xs-12 view-content">
 		<div class="col-xs-12">
-		<div class="time-display">
-			<p>
-				<span ng-bind="location.point.start_datetime | date : 'HH:mm:ss MM.dd.yyyy'"></span>
-				-
-				<span ng-bind="location.point.end_datetime | date : 'HH:mm:ss MM.dd.yyyy'"></span></p>
+
+			<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
+			<p ng-bind="location.point.description"></p>
+
+			<div class="col-xs-12">
+				<h4 class="sub-header">Tuotteet</h4>
+				<div class="product-list">
+					<product ng-repeat="product in location.products" ng-model="product"></product>
+				</div>
+			</div>
 		</div>
-		<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
-		<p ng-bind="location.point.description"></p>
-
-		<div class="col-xs-12">
-			<h4 class="sub-header">Tuotteet</h4>
-			<ul>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-				<li>Kissa</li>
-			</ul>
-		</div>
-
-
 	</div>
 </div>

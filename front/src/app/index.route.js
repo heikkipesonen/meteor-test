@@ -11,8 +11,8 @@
 
       .state('root', {
         resolve:{
-          mapData:function ($http){
-            return $http.get('app/data.json').then(function(response){
+          locations:function ($http){
+            return $http.get('app/locations.json').then(function(response){
               return response.data;
             });
           }
@@ -26,9 +26,9 @@
       .state('root.location', {
         url: '/:id',
         resolve:{
-          location:function (mapData, $q, $stateParams) {
+          location:function (locations, $q, $stateParams) {
             var d = $q.defer();
-            var marker = _.find(mapData, {id:$stateParams.id});
+            var marker = _.find(locations, {id:$stateParams.id});
             if (marker) {
               d.resolve(marker);
             } else {
