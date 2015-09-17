@@ -1,0 +1,114 @@
+$hilight-color : #d00 !default;
+
+.input-container{
+	position: relative;
+	height: 100%;
+	margin-top: 10px;
+	padding-bottom: 20px;
+
+	input{
+		padding: 15px 0px 5px 0px;
+		width: 100%;
+		border-bottom: 1px solid #444;
+
+		&:hover, &:active, &:focus{
+			border-bottom: 1px solid $hilight-color;
+		}
+
+	}
+
+	label{
+		pointer-events: none;
+	}
+}
+input:-webkit-autofill{
+	background-color: transparent !important;
+	box-shadow: none;
+}
+
+.input-wrapper{
+	position: relative;
+	display: inline-block;
+	margin-top: $grid-gutter-width;
+	margin-bottom: $grid-gutter-width;
+
+	input{
+		position: relative;
+		z-index: 1;
+	}
+
+	label{
+		z-index: 0;
+	}
+}
+
+label{
+	margin:0;
+	position: absolute;
+	font-size: 1.2rem;
+	top:50%;
+	margin-top: -10pt;
+	width: 100%;
+	display: block;
+	left:0;
+	transition: 0.3s;
+	transform-origin: left center;
+	font-weight: 400;
+}
+
+textarea+label{
+	top:0;
+}
+
+input:hover + label{
+	color: $hilight-color;
+}
+
+input:focus + label, input:active + label, input.has-value + label, input.ng-dirty + label{
+	top:0;
+	transform: scale(0.8);
+	color: $hilight-color;
+	text-indent: 0px;
+	margin-top: 0;
+}
+
+textarea:focus + label, textarea:active + label, textarea.has-value + label{
+
+	color: $hilight-color;
+
+}
+input, textarea{
+	outline:none;
+	border:none;
+	resize:none;
+	background-color: transparent;
+	transition: 0.4s;
+
+	&:hover, &:focus, &:active{
+		outline:none;
+	}
+}
+
+textarea{
+	margin-top: 15px;
+	width: 100%;
+	border-bottom: 1px solid $hilight-color;
+	min-height: 150px;
+	background-color: rgba(255,255,255,0.1);
+}
+
+
+.button{
+	background-color: $hilight-color;
+	color: white;
+	padding: 15px 25px;
+	outline: none;
+	border:none;
+	transition: 0.4s;
+
+	&:hover, &:focus, &:active{
+		outline:none;
+		border:none;
+		background-color: lighten($hilight-color, 10);
+	}
+}

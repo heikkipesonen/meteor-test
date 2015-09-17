@@ -1,0 +1,22 @@
+{
+  "name": "lahiruoka",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "~1.4.0",
+    "angular-touch": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-ui-router": "~0.2.15",
+    "ionicons": "~2.0.1"
+  },
+  "ignoredDependencies": [
+    "angular",
+    "jquery"
+  ],
+  "overrides": {
+    "ionicons": {
+      "main": [
+        "fonts/*"
+      ]
+    }
+  }
+}
