@@ -59,7 +59,7 @@ angular.module('maps')
 				}
 			},
 
-			toLatLng:function(point){
+			toLatLng: function(point){
 				if (_.isArray(point)){
 					return new google.maps.LatLng(point[0], point[1]);
 				} else if (!(point instanceof google.maps.LatLng)){

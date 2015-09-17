@@ -9,7 +9,3 @@ angular
     'imageUtils',
     'scroll'
   ]);
-
-angular.element(document).ready(function () {
-  angular.bootstrap(document, ['lahiruoka']);
-});

@@ -8,8 +8,8 @@ function routeConfig($stateProvider, $urlRouterProvider) {
 
     .state('root', {
       resolve:{
-        locations: function () {
-          return [];
+        subscribe: function ($meteor) {
+          return $meteor.subscribe('locations');
         }
       },
       url: '/map',
@@ -18,10 +18,15 @@ function routeConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'root'
     })
 
+    .state('testi', {
+      url: '/testi',
+      templateUrl: 'client/views/testi/testi.ng.html'
+    })
+
     .state('root.location', {
       url: '/:id',
       resolve:{
-        location:function (locations, $q, $stateParams) {
+        location: function (locations, $q, $stateParams) {
           var d = $q.defer();
           var marker = _.find(locations, {_id:$stateParams.id});
           if (marker) {

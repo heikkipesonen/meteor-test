@@ -6,7 +6,7 @@
     .controller('RootController', RootController);
 
   /** @ngInject */
-  function RootController($scope, mapService, mapUtils, $state, locations, $window) {
+  function RootController($scope, mapService, mapUtils, $state, $window, $meteor) {
     var vm = this;
     vm.$scope = $scope;
     vm.mapService = mapService;
@@ -14,24 +14,32 @@
     vm.$state = $state;
     vm.$window = $window;
 
-    vm.setData(locations);
+    $meteor.autorun($scope, function () {
+      Locations.find({}).observe({
+        added: function (location) {
+          vm.addLocation(location);
+        },
+        changed: function (location) {
+          console.log('changed', location);
+        },
+        removed: function (location) {
+          console.log('removed', location);
+        }
+      });
+    });
   }
 
-  RootController.prototype.setData = function (data) {
+  RootController.prototype.addLocation = function (data) {
   	var vm = this;
-  	var show = vm.showPoint.bind(vm);
-  	data.forEach(function(point){
-	  	var marker = vm.mapService.addMarker({
-	  		id:point._id,
-	  		position: vm.mapUtils.toLatLng(point.position),
-	  		data:point
-	  	});
+    var marker = vm.mapService.addMarker({
+      id: data._id,
+      position: vm.mapUtils.toLatLng([data.latitude, data.longitude]),
+      data: data
+    });
 
-
-	  	google.maps.event.addListener(marker, 'click', function(evt){
-	  		show(marker, evt);
-	  	});
-  	});
+    google.maps.event.addListener(marker, 'click', function (evt) {
+      vm.showPoint(marker, evt);
+    });
   };
 
   RootController.prototype.showPoint = function (marker) {
