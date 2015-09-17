@@ -8,10 +8,12 @@ Phasellus pharetra urna feugiat purus pharetra, molestie hendrerit mauris ultric
 
 - Install Meteor
 
-
-    curl https://install.meteor.com/ | sh
+```
+curl https://install.meteor.com/ | sh
+```
 
 - Start
 
-
-    meteor
+```
+meteor
+```
