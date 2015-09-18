@@ -27,7 +27,17 @@
 				},
 				restrict:'AE',
 				link:function($scope, $element){
+
+					// very nice hax
+					var layer = 'toner';
+					$googleMapConfig.mapTypeId = layer
+					$googleMapConfig.mapTypeControlOptions = {
+						mapTypeIds: [layer]
+					};
+
+
 					var map  = new google.maps.Map($element[0], $googleMapConfig);
+					map.mapTypes.set(layer, new google.maps.StamenMapType(layer));
 					var markers = [];
 					var readyListener = $q.defer();
 					var ready = readyListener.promise;
