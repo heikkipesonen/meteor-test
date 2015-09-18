@@ -1,0 +1,15 @@
+{
+  "maxErrors": 666,
+  "disallowSpacesInsideParentheses": true,
+  "validateIndentation": "\t",
+  "disallowMixedSpacesAndTabs": "smart",
+  "requireSpacesInsideObjectBrackets": "all",
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowMultipleLineStrings": true,
+  "disallowEmptyBlocks": true,
+  "disallowNewlineBeforeBlockStatements": true
+  //"requireSpaceAfterLineComment": { "allExcept": ["/*"] }
+}
