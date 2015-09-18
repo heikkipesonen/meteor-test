@@ -5,12 +5,15 @@
 
 @import "client/styles/variables.scss";
 @import "client/components/products/product.scss";
-@import "client/views/location/sidebar.scss";
 @import "client/views/root/root.scss";
 @import "client/styles/images.scss";
 @import "client/styles/input.scss";
 @import "client/styles/layout.scss";
 @import "client/styles/texts.scss";
 @import "client/styles/views.scss";
+@import "client/views/landing/landing.scss";
+@import "client/views/location/location.scss";
+@import "client/views/places/places.scss";
+@import "client/styles/list.scss";
 
 @import "ionicons";

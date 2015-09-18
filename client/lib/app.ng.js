@@ -7,5 +7,6 @@ angular
     'ui.router',
     'maps',
     'imageUtils',
-    'scroll'
+    'scroll',
+    'slidelist'
   ]);

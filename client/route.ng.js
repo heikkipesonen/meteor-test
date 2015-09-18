@@ -1,41 +1,58 @@
+var _ = lodash;
+
 angular
   .module('lahiruoka')
   .config(routeConfig);
 
-/** @ngInject */
 function routeConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
-
-    .state('root', {
-      resolve:{
-        subscribe: function ($meteor) {
-          return $meteor.subscribe('locations');
-        }
-      },
-      url: '/map',
-      templateUrl: 'client/views/root/root.ng.html',
-      controller: 'RootController',
-      controllerAs: 'root'
-    })
 
     .state('testi', {
       url: '/testi',
       templateUrl: 'client/views/testi/testi.ng.html'
     })
 
+    .state('root', {
+      resolve: {
+        locations: function ($meteor) {
+          $meteor.subscribe('locations');
+          return $meteor.collection(Locations);
+        }
+      },
+      abstract: true,
+      templateUrl: 'client/views/root/root.ng.html',
+      controller: 'RootController',
+      controllerAs: 'root'
+    })
+
+    .state('root.landing', {
+      url:'/home',
+      templateUrl: 'client/views/landing/landing.ng.html',
+      controller: 'LandingController',
+      controllerAs: 'landing'
+    })
+
+    .state('root.places', {
+      url:'/places',
+      templateUrl: 'client/views/places/places.ng.html',
+      controller: 'PlacesController',
+      controllerAs: 'places'
+    })
+
     .state('root.location', {
-      url: '/:id',
+      url: '/places/:location',
       resolve:{
         location: function (locations, $q, $stateParams) {
-          var d = $q.defer();
-          var marker = _.find(locations, {_id:$stateParams.id});
-          if (marker) {
-            d.resolve(marker);
+          var location = _.find(locations, '_id', $stateParams.location);
+          if (location) {
+            return location;
           } else {
-            d.reject();
+            throw 'Location not found';
           }
-
-          return d.promise;
+        },
+        products: function ($meteor, location) {
+          $meteor.subscribe('products', location._id);
+          return $meteor.collection(Products);
         }
       },
       templateUrl: 'client/views/location/location.ng.html',
@@ -43,5 +60,5 @@ function routeConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'location'
     });
 
-  $urlRouterProvider.otherwise('/map');
+  $urlRouterProvider.otherwise('/home');
 }
