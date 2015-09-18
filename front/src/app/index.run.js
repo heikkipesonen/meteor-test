@@ -6,10 +6,15 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($rootScope, $state) {
+  function runBlock($rootScope, $state, $document) {
+
+    $document[0].body.addEventListener('touchmove', function (evt) {
+      evt.preventDefault();
+    });
+
 
   	$rootScope.$on('$stateChangeError', function () {
-  		$state.go('root');
+  		$state.go('root.landing');
   	});
   }
 

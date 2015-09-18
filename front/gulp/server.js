@@ -41,7 +41,8 @@ function browserSyncInit(baseDir, browser) {
     browser: browser,
     notify:false,
     scrollProportionally: false,
-    ghostMode: false
+    ghostMode: false,
+    online:false
   });
 }
 

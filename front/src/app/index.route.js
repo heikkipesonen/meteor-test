@@ -17,20 +17,34 @@
             });
           }
         },
-        url: '/map',
+        abstract:true,
         templateUrl: 'app/root/index.html',
         controller: 'RootController',
         controllerAs: 'root'
       })
 
+      .state('root.landing', {
+        url:'/home',
+        templateUrl: 'app/landing/landing.html',
+        controller: 'LandingController',
+        controllerAs: 'landing'
+      })
+
+      .state('root.places', {
+        url:'/places',
+        templateUrl: 'app/places/places.html',
+        controller: 'PlacesController',
+        controllerAs: 'places'
+      })
+
       .state('root.location', {
-        url: '/:id',
+        url: '/places/:location',
         resolve:{
           location:function (locations, $q, $stateParams) {
             var d = $q.defer();
-            var marker = _.find(locations, {id:$stateParams.id});
-            if (marker) {
-              d.resolve(marker);
+            var location = _.find(locations, {id:$stateParams.location});
+            if (location) {
+              d.resolve(location);
             } else {
               d.reject();
             }
@@ -43,7 +57,7 @@
         controllerAs: 'location'
       });
 
-    $urlRouterProvider.otherwise('/map');
+    $urlRouterProvider.otherwise('/home');
   }
 
 })();

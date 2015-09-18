@@ -10,7 +10,6 @@
 					imageLoader:'='
 				},
 				link:function($scope, $element, $attrs){
-
 					function setImage(){
 						$element.removeClass('image-ready').addClass('image-loading');
 						var img = new Image();
@@ -33,7 +32,6 @@
 							$element.removeClass('image-loading')
 											.addClass('image-ready');
 						};
-
 						img.src = $scope.imageLoader.url ? $scope.imageLoader.url : $scope.imageLoader;
 					}
 

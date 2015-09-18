@@ -1,17 +1,24 @@
-<div class="view" scroll-y>
-	<div class="view-header">
+<div class="view view-translate" scroll-y>
+	<div class="view-header"  ng-click="location.back()">
 	</div>
 
-	<div class="col-xs-12 view-content">
+	<div class="col-xs-12 view-content view-content-white view-shadow">
 		<div class="col-xs-12">
 
-			<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
-			<p ng-bind="location.point.description"></p>
+			<div class="view-text-container">
+				<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
+				<p ng-bind="location.point.description"></p>
 
-			<div class="col-xs-12">
-				<h4 class="sub-header">Tuotteet</h4>
-				<div class="product-list">
-					<product ng-repeat="product in location.products" ng-model="product"></product>
+				<div class="view-text-fade"></div>
+			</div>
+
+			<div class="col-xs-12 list-products">
+				<h4 class="sub-header text-center">Tuotteet</h4>
+				<div class="product-types" ng-repeat="(typeIndex, type) in location.availableTypes track by typeIndex">
+					<h4 ng-bind="::type"></h4>
+				</div>
+				<div class="product-list" slide-list>
+					<product ng-repeat="product in location.products | limitTo : 10 track by product.id" slide-item="x" ng-model="product"></product>
 				</div>
 			</div>
 		</div>

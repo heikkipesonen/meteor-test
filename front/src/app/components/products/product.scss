@@ -2,6 +2,22 @@ $product-info-width : 82px;
 
 .product{
 	padding: 5px 0;
+	font-size: 1rem;
+	background-color: white;
+
+	*{
+		pointer-events: none;
+	}
+
+	h3{
+		font-size: 1.3rem;
+		font-weight: 300;
+	}
+
+	h4{
+		font-size: 1.2rem;
+		font-weight: 300;
+	}
 
 	.product-info{
 		width: $product-info-width;
@@ -10,7 +26,6 @@ $product-info-width : 82px;
 
 	.product-title, .product-price{
 		font-weight: bold;
-		font-size: 14pt;
 	}
 
 	.product-price{
@@ -22,6 +37,10 @@ $product-info-width : 82px;
 
 	.product-content{
 		padding-left: $product-info-width + $grid-gutter-width;
+	}
+
+	.product-description{
+		display: none;
 	}
 
 

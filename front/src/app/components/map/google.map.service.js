@@ -13,7 +13,6 @@
 				ready: ready.promise,
 
 				setReady: function(){
-					console.log('erer')
 					ready.resolve(this.map);
 				},
 

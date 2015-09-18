@@ -20,27 +20,105 @@
 		})
 
 
-		.directive('googleMap', function($googleMapConfig, mapService){
+		.directive('googleMap', function($googleMapConfig, mapUtils, $rootScope, $q){
 			return {
-				scope:{},
+				scope:{
+					locations:'=ngModel'
+				},
 				restrict:'AE',
 				link:function($scope, $element){
 					var map  = new google.maps.Map($element[0], $googleMapConfig);
-					mapService.setMap(map);
+					var markers = [];
+					var readyListener = $q.defer();
+					var ready = readyListener.promise;
+
+					var markerClick = function (location) {
+						$rootScope.$broadcast('marker.click', location);
+					};
+
+					var addMarker = function (location) {
+						var marker = new google.maps.Marker({
+							position: mapUtils.toLatLng(location.position),
+							icon: 'assets/marker-1.png',
+							data:location
+						});
+
+						google.maps.event.addListener(marker, 'click', function (evt) {
+							markerClick(marker.data);
+						});
+
+						marker.setMap(map);
+						markers.push(marker);
+
+					};
+
+					var findMarker = function (location) {
+						return _.find(markers, {data:location});
+					};
+
+					var removeMarker = function (location) {
+						var marker = findMarker(location);
+
+						if (marker){
+							markers.splice(markers.indexOf(marker),1);
+							marker.setMap(null);
+							console.log('removed', marker);
+						} else {
+							console.error('tried to remove non existing marker', location);
+						}
+					};
+
+					var updateLocations = function (newVal, oldVal){
+						var added = _.difference(newVal, markers);
+						var removed = _.difference(markers, newVal);
+
+						if (added.length || removed.length || newVal !== oldVal){
+							added.forEach(addMarker);
+							removed.forEach(removeMarker);
+						}
+					};
+
+					var showMarker = function (evt, location) {
+						ready.then(function(){
+							var marker = findMarker(location);
+							var markerPosition = mapUtils.getPixelPosition(marker.position, marker.map);
+							var position = [markerPosition[0], markerPosition[1]];
+							var headerCenter = [window.innerWidth / 2 , (window.innerWidth * 0.7) / 2];
+
+							map.panBy(position[0] - headerCenter[0], position[1] - headerCenter[1]);
+						});
+					};
+
+					var setZoom = function (evt, data) {
+						ready.then(function () {
+							map.setZoom(data);
+						});
+					}
 
 					google.maps.event.addListenerOnce(map, 'idle', function() {
-						console.log('asdfdsfs')
-						mapService.setReady();
+						console.info('map.ready');
+						readyListener.resolve();
 					});
 
-					google.maps.event.addListener(map, 'click', function (evt) {
-						$scope.$emit('map.click', evt);
-					});
+					// google.maps.event.addListener(map, 'click', function (evt) {
+					// 	$scope.$emit('map.click', evt);
+					// });
 
-					google.maps.event.addListener(map, 'rightclick', function (evt) {
-						$scope.$emit('map.click', evt);
-					});
+					// google.maps.event.addListener(map, 'rightclick', function (evt) {
+					// 	$scope.$emit('map.click', evt);
+					// });
 
+					$rootScope.$on('map.center', showMarker);
+					$rootScope.$on('map.zoom', setZoom);
+
+					$scope.$watch(function () {
+						return $scope.locations;
+					}, updateLocations, true);
+
+
+
+
+					console.log('init: map');
 				}
 			};
 		});
