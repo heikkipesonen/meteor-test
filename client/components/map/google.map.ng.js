@@ -62,15 +62,19 @@
 						if (marker){
 							markers.splice(markers.indexOf(marker),1);
 							marker.setMap(null);
-							console.log('removed', marker);
 						} else {
 							console.error('tried to remove non existing marker', location);
 						}
 					};
 
 					var updateLocations = function (newVal, oldVal){
-						var added = _.difference(newVal, markers);
-						var removed = _.difference(markers, newVal);
+						var added = _.filter(newVal, function (l) {
+							return !_.find(markers, 'data._id', l._id);
+						});
+
+						var removed = _.filter(markers, function (m) {
+							return !_.find(newVal, '_id', m.data._id);
+						});
 
 						if (added.length || removed.length || newVal !== oldVal){
 							added.forEach(addMarker);
