@@ -1,11 +1,19 @@
 var chance = new Chance();
 
-insertTestData = function () {
+Meteor.methods({
+  'createTestData': function () {
+    this.unblock();
+    createTestData();
+  }
+});
+
+createTestData = function () {
   Locations.remove({});
   Products.remove({});
 
   _.times(100, function () {
     var locationId = Locations.insert({
+      name: chance.word(),
       latitude: Math.random() + 60.2,
       longitude: Math.random() + 25,
       type: _.sample(Locations.TYPES)
@@ -26,5 +34,5 @@ insertTestData = function () {
 };
 
 if (Locations.find({}).count() === 0) {
-  insertTestData();
+  createTestData();
 }

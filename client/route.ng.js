@@ -14,9 +14,10 @@ function routeConfig($stateProvider, $urlRouterProvider) {
 
     .state('root', {
       resolve: {
-        locations: function ($meteor) {
-          $meteor.subscribe('locations');
-          return $meteor.collection(Locations);
+        locations: function ($q, $meteor) {
+          return $meteor.subscribe('locations').then(function () {
+            return $meteor.collection(Locations);
+          });
         }
       },
       abstract: true,
@@ -52,8 +53,9 @@ function routeConfig($stateProvider, $urlRouterProvider) {
           }
         },
         products: function ($meteor, location) {
-          $meteor.subscribe('products', location._id);
-          return $meteor.collection(Products);
+          return $meteor.subscribe('products', location._id).then(function () {
+            return $meteor.collection(Products);
+          });
         }
       },
       templateUrl: 'client/views/location/location.ng.html',
