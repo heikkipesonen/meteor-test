@@ -14,8 +14,8 @@ createTestData = function () {
   _.times(100, function () {
     var locationId = Locations.insert({
       name: chance.word(),
-      latitude: Math.random() + 60.2,
-      longitude: Math.random() + 25,
+      latitude: Math.random()*6 + 60,
+      longitude: Math.random()*8 + 22,
       type: _.sample(Locations.TYPES)
     });
 

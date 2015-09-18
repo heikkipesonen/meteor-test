@@ -13,9 +13,15 @@
     vm.$timeout = $timeout;
     vm.$state = $state;
 
-    console.log(location);
-    $scope.$emit('map.zoom', 10);
-    $scope.$emit('map.center', vm.point);
+
+    // $scope.$emit('map.zoom', 10);
+
+    $timeout(function () {
+      var mbb = document.querySelector('.marker-bounding-box');
+      var box = [mbb.offsetWidth, mbb.offsetHeight];
+      $scope.$emit('map.setMarkerCenterOn', vm.point, box);
+    },400);
+    // [window.innerWidth / 2 , (window.innerWidth * 0.7) / 2];
 
     vm.products = products;
 
@@ -25,15 +31,6 @@
   LocationController.prototype.back = function () {
     var vm = this;
     vm.$state.go('root.places');
-  };
-
-  LocationController.prototype.getProducts = function () {
-  	var vm = this;
-  	vm.$http.get('api/product/' + vm.point._id).then(function (response) {
-  		vm.products = response.data;
-      vm.availableTypes = _.uniq( _.pluck(vm.products, 'category') );
-      vm.availableProducers = _.uniq( _.pluck(vm.products, 'company') );
-  	});
   };
 
 })();

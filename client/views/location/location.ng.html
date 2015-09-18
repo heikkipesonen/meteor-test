@@ -1,15 +1,11 @@
-<div class="view view-translate" layout="column">
-	<div class="view-header">
-	</div>
-	<div class="view-content-white" flex></div>
+<div class="view view-translate view-small" layout="column">
+	<div class="view-header marker-bounding-box" ng-click="location.back()"></div>
+	<div class="view-content-white col-gt-sm-hide" flex></div>
 
-	<div class="view" scroll-y>
-		<div class="view-header"  ng-click="location.back()">
-		</div>
+	<div class="view view-shadow-gt-sm view-white-gt-sm" scroll-y>
+		<div class="view-header col-gt-sm-hide" ng-click="location.back()"></div>
 
-		<div class="col-xs-12 no-gutter view-content-white view-shadow">
-
-
+		<div class="col-xs-12 no-gutter view-content-white view-shadow-lt-sm">
 				<div class="view-text-container view-content">
 					<div class="view-title-wrapper">
 						<h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.point.name"></h2>

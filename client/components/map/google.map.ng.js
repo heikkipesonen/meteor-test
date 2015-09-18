@@ -103,6 +103,16 @@
 						});
 					};
 
+					var setMarkerCenterOn = function (evt, location, boundingbox) {
+						ready.then(function(){
+							var marker = findMarker(location);
+							var markerPosition = mapUtils.getPixelPosition(marker.position, marker.map);
+							var position = [markerPosition[0], markerPosition[1]];
+							var headerCenter = [boundingbox[0] / 2 , boundingbox[1] / 2];
+							map.panBy(position[0] - headerCenter[0], position[1] - headerCenter[1]);
+						});
+					};
+
 					var getZoom = function (){
 						return ready.then(function () {
 							return map.getZoom();
@@ -128,6 +138,7 @@
 					// 	$scope.$emit('map.click', evt);
 					// });
 
+					$rootScope.$on('map.setMarkerCenterOn', setMarkerCenterOn);
 					$rootScope.$on('map.center', showMarker);
 					$rootScope.$on('map.zoom', setZoom);
 

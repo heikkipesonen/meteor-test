@@ -16,10 +16,14 @@
         '<div class="product">'+
           '<div class="product-info">'+
             '<h3 class="product-price">'+
-              '<span class="price" ng-bind="product.price + \'€\'"></span>'+
-              '<span class="unit" ng-bind="\'/\'+product.unit"></span>'+
+              '<span class="price" ng-bind="product.price | number : 2"></span>'+
+              '<span class="currency">&nbsp;€</span>'+
+              '<span class="unit" ng-bind="\'&nbsp;/&nbsp;\'+product.unit"></span>'+
             '</h3>'+
-            '<h4 class="product-available" ng-bind="product.available"></h4>'+
+            '<h4 class="product-available">'+
+              '<span ng-bind="product.available"></span>'+
+              '<span class="unit" ng-bind="\'&nbsp;\' + product.unit"></span>'+
+            '</h4>'+
           '</div>'+
           '<div class="product-content">'+
             '<h3 class="product-title" ng-bind="product.name"></h3>'+
