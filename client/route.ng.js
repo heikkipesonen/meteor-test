@@ -43,6 +43,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
       url: '/places/:location',
       resolve:{
         location: function (locations, $q, $stateParams) {
+          console.log(locations.length);
           var location = _.find(locations, '_id', $stateParams.location);
           if (location) {
             return location;

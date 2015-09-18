@@ -14,7 +14,7 @@ angular.module('scroll',[])
 				scrollY:'=' // scroll model for remembering the scroll position when view is destroyed
 			},
 			link:function($scope, $element){
-console.log('scroll')
+
 				function getCursor(evt){
 					if (evt.touches.length > 0){
 						return {x:evt.touches[0].pageX,y:evt.touches[0].pageY};
