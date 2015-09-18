@@ -6,15 +6,14 @@
     .controller('LocationController', LocationController);
 
   /** @ngInject */
-  function LocationController($scope, location, mapUtils, $timeout, mapService, $state, products) {
+  function LocationController($scope, location, $timeout, $state, products) {
     var vm = this;
     vm.point = location;
-    vm.mapUtils = mapUtils;
-    vm.mapService = mapService;
+
     vm.$timeout = $timeout;
     vm.$state = $state;
 
-    console.log('location');
+    console.log(location);
     $scope.$emit('map.zoom', 10);
     $scope.$emit('map.center', vm.point);
 

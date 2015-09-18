@@ -16,6 +16,9 @@ $toolbar-width: 64px;
 	}
 }
 
+.mapboxgl-map{
+	position: absolute !important;
+}
 
 .no-gutter{
 	padding-left: 0;
