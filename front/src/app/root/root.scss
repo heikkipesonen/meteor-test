@@ -1,0 +1,19 @@
+.view-toolbar-top{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	height: 42px;
+	line-height: 42px;
+	background-color: white;
+	box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.view.view-has-toolbar{
+	top:42px;
+}
+
+.view-child-has-toolbar>.view{
+	top: 42px;
+}

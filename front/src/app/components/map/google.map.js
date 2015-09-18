@@ -31,6 +31,11 @@
 					var markers = [];
 					var readyListener = $q.defer();
 					var ready = readyListener.promise;
+					var icons = {
+						market:'assets/marker-cart.png',
+						meeting:'assets/marker-people.png',
+						farm:'assets/marker-farm.png'
+					}
 
 					var markerClick = function (location) {
 						$rootScope.$broadcast('marker.click', location);
@@ -39,7 +44,7 @@
 					var addMarker = function (location) {
 						var marker = new google.maps.Marker({
 							position: mapUtils.toLatLng(location.position),
-							icon: 'assets/marker-1.png',
+							icon: icons[location.type] || 'assets/marker-1.png',
 							data:location
 						});
 
@@ -88,6 +93,12 @@
 							map.panBy(position[0] - headerCenter[0], position[1] - headerCenter[1]);
 						});
 					};
+
+					var getZoom = function (){
+						return ready.then(function () {
+							return map.getZoom();
+						});
+					}
 
 					var setZoom = function (evt, data) {
 						ready.then(function () {

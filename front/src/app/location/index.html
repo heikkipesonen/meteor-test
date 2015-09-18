@@ -1,26 +1,35 @@
-<div class="view view-translate" scroll-y>
-	<div class="view-header"  ng-click="location.back()">
+<div class="view view-translate" layout="column">
+	<div class="view-header">
 	</div>
+	<div class="view-content-white" flex></div>
 
-	<div class="col-xs-12 view-content view-content-white view-shadow">
-		<div class="col-xs-12">
+	<div class="view" scroll-y>
+		<div class="view-header"  ng-click="location.back()">
+		</div>
 
-			<div class="view-text-container">
-				<h2 class="view-title text-center" ng-bind="location.point.name"></h2>
-				<p ng-bind="location.point.description"></p>
+		<div class="col-xs-12 no-gutter view-content-white view-shadow">
 
-				<div class="view-text-fade"></div>
-			</div>
 
-			<div class="col-xs-12 list-products">
-				<h4 class="sub-header text-center">Tuotteet</h4>
-				<div class="product-types" ng-repeat="(typeIndex, type) in location.availableTypes track by typeIndex">
-					<h4 ng-bind="::type"></h4>
+				<div class="view-text-container view-content">
+					<div class="view-title-wrapper">
+						<h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.point.name"></h2>
+						<p class="subtitle text-center" ng-bind="location.point.type"></p>
+					</div>
+					<!-- <p ng-bind="location.point.description"></p> -->
+
+					<!-- <div class="view-text-fade"></div> -->
 				</div>
-				<div class="product-list" slide-list>
-					<product ng-repeat="product in location.products | limitTo : 10 track by product.id" slide-item="x" ng-model="product"></product>
+
+				<div class="col-xs-12 no-gutter list-products">
+					<!-- <h4 class="sub-header text-center">Tuotteet</h4> -->
+<!-- 					<div class="product-types" ng-repeat="(typeIndex, type) in location.availableTypes track by typeIndex">
+						<h4 ng-bind="::type"></h4>
+					</div> -->
+					<div class="product-list">
+						<product ng-repeat="product in location.products | limitTo : 10 track by product.id" slide-item="x" ng-model="product"></product>
+					</div>
 				</div>
-			</div>
+
 		</div>
 	</div>
 </div>

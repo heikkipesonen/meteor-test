@@ -1,5 +1,6 @@
 <div class="view view-root">
-	<google-map class="view" ng-model="root.items"></google-map>
+	<div class="view-toolbar-top"></div>
+	<google-map class="view view-has-toolbar" ng-model="root.items"></google-map>
 <!-- 	<div class="view-toolbar">
 		<div class="tool" ng-click="root.create()">
 			<i class="ion-ios-plus-outline"></i>
@@ -8,5 +9,5 @@
 			<i class="ion-ios-search"></i>
 		</div>
 	</div> -->
-	<ui-view class="view-root-child view-animate"></ui-view>
+	<ui-view class="view-child-has-toolbar view-root-child view-animate"></ui-view>
 </div>

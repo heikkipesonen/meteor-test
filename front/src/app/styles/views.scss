@@ -16,6 +16,16 @@ $toolbar-width: 64px;
 	}
 }
 
+
+.no-gutter{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.no-margin{
+	margin:0;
+}
+
 .view-content{
 	padding: 15px;
 
@@ -25,10 +35,7 @@ $toolbar-width: 64px;
 	background-color: white;
 }
 
-.view-title{
-	margin-top: 40px;
-	margin-bottom: 30px;
-}
+
 
 .view-background{
 	@extend .view;
