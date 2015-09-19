@@ -1,0 +1,55 @@
+$product-info-width : 82px;
+
+.product{
+	padding: 5px 15px;
+	font-size: 1rem;
+	background-color: white;
+
+	*{
+		pointer-events: none;
+	}
+
+	h3{
+		font-size: 1.3rem;
+		font-weight: 300;
+	}
+
+	h4{
+		font-size: 1.2rem;
+		font-weight: 300;
+	}
+
+	.product-info{
+		width: $product-info-width;
+		position: absolute;
+	}
+
+	.product-title, .product-price{
+		font-weight: bold;
+	}
+
+	.product-price{
+
+		.unit{
+			font-size: 8pt;
+		}
+	}
+
+	.product-content{
+		padding-left: $product-info-width + $grid-gutter-width;
+	}
+
+	.product-description{
+		display: none;
+	}
+
+
+	&:not(:last-child){
+		border-bottom: 1px solid #ddd;
+	}
+
+	.product-controls{
+		line-height: 42px;
+		font-size: 32px;
+	}
+}

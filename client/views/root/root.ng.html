@@ -1,0 +1,18 @@
+<div class="view view-root">
+	<google-map class="view view-has-header" ng-model="root.items"></google-map>
+
+<!-- 	<div class="view-toolbar">
+		<div class="tool" ng-click="root.create()">
+			<i class="ion-ios-plus-outline"></i>
+		</div>
+		<div class="tool">
+			<i class="ion-ios-search"></i>
+		</div>
+	</div> -->
+	<ui-view class="view-child-has-header view-root-child view-animate view-animate-from-right-gt-sm"></ui-view>
+	<div class="view-header-top" layout="row" layout-align="center center">
+		<i class="ion-ios-home" ui-sref="root.landing"></i>
+		<h4 class="text-center text-uppercase text-light" flex>paskoja vihanneksija</h4>
+		<i class="ion-ios-more" ui-sref="root.landing"></i>
+	</div>
+</div>

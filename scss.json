@@ -1,0 +1,15 @@
+{
+  "useIndex" : true,
+  "indexFilePath": "client/styles/index.scss",
+  "enableAutoprefixer": true,
+  "autoprefixerOptions": {
+    "browsers": [
+      "> 1%"
+    ],
+    "cascade": false
+  },
+  "includePaths": [
+    ".meteor/local/bower/ionicons/scss",
+    ".meteor/local/bower/bootstrap-sass/assets/stylesheets"
+  ]
+}
