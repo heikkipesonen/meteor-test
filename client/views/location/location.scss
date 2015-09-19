@@ -1,7 +1,14 @@
 
+.view-open-times{
+	font-size: 10pt;
+
+	p{
+		margin:0;
+	}
+}
+
 .view-text-container{
 	position: relative;
-	max-height: 200px;
 	overflow: hidden;
 
 	.view-text-fade{

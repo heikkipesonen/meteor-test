@@ -13,7 +13,7 @@
     vm.$timeout = $timeout;
     vm.$state = $state;
 
-
+console.log(location);
     // $scope.$emit('map.zoom', 10);
 
     $timeout(function () {

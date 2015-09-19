@@ -41,14 +41,22 @@ createTestData = function () {
 
 
   _.times(100, function () {
+    var active = [];
+
+    _.times(chance.integer({min:1, max:10}), function () {
+      active.push({
+        end_datetime: chance.hammertime(),
+        start_datetime: chance.hammertime()
+      });
+    });
+
     var locationId = Locations.insert({
       name: chance.word(),
       latitude: Math.random()*6 + 60,
       longitude: Math.random()*8 + 22,
-      start_datetime: chance.hammertime(),
-      end_datetime: chance.hammertime(),
       type: _.sample(Locations.TYPES),
-      owner: _.sample(users)
+      owner: _.sample(users),
+      active: active
     });
 
    _.times(chance.integer({min: 1, max: 10}), function () {
