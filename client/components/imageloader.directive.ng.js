@@ -7,7 +7,7 @@
 			return {
 				restrict:'AE',
 				scope:{
-					imageLoader:'='
+					src:'=imageLoader'
 				},
 				link:function($scope, $element, $attrs){
 					function setImage(){
@@ -32,11 +32,11 @@
 							$element.removeClass('image-loading')
 											.addClass('image-ready');
 						};
-						img.src = $scope.imageLoader.url ? $scope.imageLoader.url : $scope.imageLoader;
+						img.src = $scope.src.url ? $scope.src.url : $scope.src;
 					}
 
-					$scope.$watch('imageLoader', function(){
-						if ($scope.imageLoader && $scope.imageLoader !== ''){
+					$scope.$watch('src', function(){
+						if ($scope.src && $scope.src !== ''){
 							setImage();
 						}
 					});
