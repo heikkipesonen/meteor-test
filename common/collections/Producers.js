@@ -19,9 +19,6 @@ angular.module('lahiruoka.backend').service('Producers', function (PositionSchem
     position: {
       type: PositionSchema
     },
-    address: {
-      type: String
-    },
     type: {
       type: String,
       allowedValues: Producers.TYPES

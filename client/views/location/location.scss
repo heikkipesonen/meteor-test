@@ -1,7 +1,28 @@
 
+.view-open-times{
+
+	p{
+		margin:0;
+	}
+}
+
+.calendar{
+	font-size: 10pt;
+	line-height: 16pt;
+	width: 100%;
+
+	.calendar-select{
+		padding: 15px;
+	}
+
+	.selected{
+		background-color: $hilight-color;
+		color: white;
+	}
+}
+
 .view-text-container{
 	position: relative;
-	max-height: 200px;
 	overflow: hidden;
 
 	.view-text-fade{

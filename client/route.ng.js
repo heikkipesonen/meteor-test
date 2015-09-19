@@ -44,18 +44,12 @@ function routeConfig($stateProvider, $urlRouterProvider) {
       url: '/places/:location',
       resolve:{
         location: function (locations, $q, $stateParams) {
-          console.log(locations.length);
           var location = _.find(locations, '_id', $stateParams.location);
           if (location) {
             return location;
           } else {
             throw 'Location not found';
           }
-        },
-        products: function ($meteor, location, Products) {
-          return $meteor.subscribe('products', location._id).then(function () {
-            return $meteor.collection(Products);
-          });
         }
       },
       templateUrl: 'client/views/location/location.ng.html',

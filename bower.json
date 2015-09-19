@@ -7,7 +7,8 @@
     "angular-touch": "~1.4.0",
     "angular-ui-router": "~0.2.15",
     "bootstrap-sass": "~3.3.5",
-    "ionicons": "~2.0.1"
+    "ionicons": "~2.0.1",
+    "moment": "~2.10.6"
   },
   "ignoredDependencies": [
     "angular",

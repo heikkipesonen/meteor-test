@@ -3,18 +3,24 @@ angular.module('lahiruoka.backend').service('Locations', function (PositionSchem
 
   Locations.TYPES = ['market', 'meeting', 'farm'];
 
+  var TimetableSchema = new SimpleSchema({
+    start_datetime:{
+      type: Date
+    },
+    end_datetime:{
+      type: Date
+    }
+  });
+
   Locations.attachSchema({
     name: {
       type: String
     },
+    active:{
+      type:[TimetableSchema]
+    },
     position: {
       type: PositionSchema
-    },
-    start_datetime: {
-      type: Number
-    },
-    end_datetime: {
-      type: Number
     },
     owner: {
       type: String

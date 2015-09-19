@@ -11,6 +11,9 @@ angular.module('lahiruoka.backend').service('PositionSchema', function () {
       decimal: true,
       min: -180,
       max: 180
+    },
+    address: {
+      type: String
     }
   });
 

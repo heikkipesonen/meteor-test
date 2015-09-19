@@ -16,3 +16,7 @@ fourseven:scss
 aldeed:collection2
 stevezhu:lodash
 risul:chance
+
+# DEBUG-stuff
+constellation:console
+constellation:subscriptions
