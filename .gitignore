@@ -6,3 +6,4 @@ bower_components/
 dist/
 public/
 .DS_Store
+.meteor
