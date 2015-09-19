@@ -1,3 +1,10 @@
+.animate{
+	transition-duration: $ios-transition-duration;
+	transition-timing-function: $ios-transition-timing-function;
+  -webkit-transition-property: opacity, -webkit-transform;
+          transition-property: opacity, transform;
+}
+
 
 [ng-click], [ui-sref]{
 	cursor: pointer;

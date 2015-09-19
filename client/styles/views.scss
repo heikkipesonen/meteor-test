@@ -1,5 +1,6 @@
-$view-transition : 0.4s;
+$view-transition : $ios-transition-duration;
 $toolbar-width: 64px;
+$view-transition-timing-function-enter: $ios-transition-timing-function;
 
 .view {
 	position: absolute;
@@ -87,8 +88,6 @@ $toolbar-width: 64px;
 
 
 
-
-$view-transition-timing-function-enter: cubic-bezier(0.785, 0.135, 0.150, 0.860);
 
 .view-animate {
 	transition: $view-transition !important;

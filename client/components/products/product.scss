@@ -1,9 +1,9 @@
 $product-info-width : 82px;
 
 .product{
-	padding: 5px 15px;
 	font-size: 1rem;
 	background-color: white;
+
 
 	*{
 		pointer-events: none;
@@ -11,45 +11,60 @@ $product-info-width : 82px;
 
 	h3{
 		font-size: 1.3rem;
-		font-weight: 300;
+		font-weight: 500;
 	}
 
 	h4{
 		font-size: 1.2rem;
-		font-weight: 300;
+		font-weight: 200;
+	}
+
+	.product-info, .product-content{
+		padding: 0 $grid-gutter-width / 2;
 	}
 
 	.product-info{
-		width: $product-info-width;
-		position: absolute;
+		width: 96px;
+		background-color: $hilight-color;
+		color: white;
 	}
 
-	.product-title, .product-price{
-		font-weight: bold;
+	position: relative;
+	z-index: 1;
+
+	@extend .animate;
+
+	&.controls-exposed{
+		transform: translate3d(50%, 0,0);
 	}
+}
 
-	.product-price{
+.product-wrapper{
+	position: relative;
 
-		.unit{
-			font-size: 8pt;
-		}
+
+	&:first-of-type{
+		border-top: 1px solid $hilight-color;
 	}
-
-	.product-content{
-		padding-left: $product-info-width + $grid-gutter-width;
-	}
-
-	.product-description{
-		display: none;
-	}
-
 
 	&:not(:last-child){
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid $hilight-color;
 	}
 
-	.product-controls{
-		line-height: 42px;
-		font-size: 32px;
-	}
+	 &:nth-child(even) .product-info{
+	 	background-color: lighten($hilight-color, 10);
+	 }
+}
+
+
+.product-controls{
+	position: absolute;
+	left:0;
+	right: 50%;
+	top: 0;
+	bottom: 0;
+	line-height: 42px;
+	font-size: 32px;
+	z-index: 0;
+	color: $hilight-color;
 }

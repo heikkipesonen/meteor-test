@@ -2,6 +2,8 @@ $grid-gutter-width: 15px;
 $navbar-inverse-link-color: #5AADBB;
 $hilight-color: #ee7511;
 $ionicons-font-path: "packages/bower/ionicons/fonts";
+$ios-transition-timing-function: cubic-bezier(.3, .9, .4, 1) !default;
+$ios-transition-duration:              450ms !default;
 
 $screen-sm: 800px;
 $screen-md: 1000px;
