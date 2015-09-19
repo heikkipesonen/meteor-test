@@ -9,12 +9,10 @@
       return {
         restrict: 'AE',
         scope:{
-          product:'=ngModel'
+          product:'=ngModel',
+          exposed:'=isOpen'
         },
         replace:true,
-        controller: function ($scope) {
-
-        },
         templateUrl:'client/components/products/product.ng.html'
       };
     }

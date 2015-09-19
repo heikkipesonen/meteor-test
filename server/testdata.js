@@ -28,12 +28,15 @@ createTestData = function () {
 
   _.times(50, function () {
     var producerId = Producers.insert({
+      owner: _.sample(users),
       name: chance.sentence({words:2}),
       description: chance.paragraph(),
       type: _.sample(Producers.TYPES),
-      address: chance.address(),
-      latitude: Math.random()*6 + 60,
-      longitude: Math.random()*8 + 22
+      position:{
+        address: chance.address(),
+        lat: Math.random()*6 + 60,
+        lng: Math.random()*8 + 22
+      }
     });
 
     producers.push(producerId);
@@ -44,16 +47,30 @@ createTestData = function () {
     var active = [];
 
     _.times(chance.integer({min:1, max:10}), function () {
+
+      var startTime = new Date();
+      startTime.setDate(chance.integer({min:1, max:30}));
+      startTime.setMonth(chance.integer({min:0, max:11}));
+      startTime.setHours(chance.integer({min:0, max:23}));
+      startTime.setMinutes(chance.integer({min:0, max:59}));
+
+      var endTime = new Date(startTime.getTime());
+      endTime.setHours(chance.integer({min: startTime.getHours(), max: startTime.getHours()+10}));
+
       active.push({
-        end_datetime: chance.hammertime(),
-        start_datetime: chance.hammertime()
+        start_datetime: startTime,
+        end_datetime: endTime
       });
+
     });
 
     var locationId = Locations.insert({
       name: chance.word(),
-      latitude: Math.random()*6 + 60,
-      longitude: Math.random()*8 + 22,
+      position:{
+        address: chance.address(),
+        lat: Math.random()*6 + 60,
+        lng: Math.random()*8 + 22,
+      },
       type: _.sample(Locations.TYPES),
       owner: _.sample(users),
       active: active

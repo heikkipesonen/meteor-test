@@ -162,6 +162,10 @@
 	flex:1;
 }
 
+[flex-wrap]{
+	flex-wrap: wrap;
+}
+
 @for $i from 1 through 20 {
 	[layout="column"] [flex="#{$i * 5}"] {
 		flex: 0;

@@ -47,7 +47,7 @@
 			 */
 			vm.addMarkerFromLocation = function (location) {
 				var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(location.latitude, location.longitude),
+					position: new google.maps.LatLng(location.position.lat, location.position.lng),
 					icon: 'images/marker-' + location.type + '.png',
 					data:location
 				});

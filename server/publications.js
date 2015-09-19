@@ -1,5 +1,7 @@
-Meteor.publish('Producers', function () {
-  return Producers.find({});
+Meteor.publish('producers', function (producerId) {
+  return Producers.find({
+  	_id: producerId
+  });
 });
 
 Meteor.publish('Users', function () {
