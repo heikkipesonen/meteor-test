@@ -169,7 +169,7 @@
 
 					var setMarkerCenterOn = function (evt, location, boundingbox) {
 						ready.then(function(){
-							var marker = findMarker(location);
+							var marker = mapMarkers.findMarkerByLocation(location);
 							var markerPosition = mapUtils.getPixelPosition(marker.position, marker.map);
 							var position = [markerPosition[0], markerPosition[1]];
 							var headerCenter = [boundingbox[0] / 2 , boundingbox[1] / 2];
