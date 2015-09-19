@@ -8,5 +8,6 @@ angular
     'maps',
     'imageUtils',
     'scroll',
-    'slidelist'
+    'slidelist',
+    'lahiruoka.backend'
   ]);

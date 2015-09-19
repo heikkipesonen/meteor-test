@@ -1,12 +1,12 @@
-angular.module('lib').service('PositionSchema', function () {
+angular.module('lahiruoka.backend').service('PositionSchema', function () {
   var PositionSchema = new SimpleSchema({
-    latitude: {
+    lat: {
       type: Number,
       decimal: true,
       min: -90,
       max: 90
     },
-    longitude: {
+    lng: {
       type: Number,
       decimal: true,
       min: -180,

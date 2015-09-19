@@ -14,7 +14,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
 
     .state('root', {
       resolve: {
-        locations: function ($q, $meteor) {
+        locations: function ($q, $meteor, Locations) {
           return $meteor.subscribe('locations').then(function () {
             return $meteor.collection(Locations);
           });
@@ -52,7 +52,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             throw 'Location not found';
           }
         },
-        products: function ($meteor, location) {
+        products: function ($meteor, location, Products) {
           return $meteor.subscribe('products', location._id).then(function () {
             return $meteor.collection(Products);
           });

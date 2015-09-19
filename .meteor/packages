@@ -6,6 +6,8 @@
 
 meteor-platform
 
+accounts-google
+
 angular
 netanelgilad:angular-server
 
