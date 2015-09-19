@@ -47,4 +47,9 @@ $product-info-width : 82px;
 	&:not(:last-child){
 		border-bottom: 1px solid #ddd;
 	}
+
+	.product-controls{
+		line-height: 42px;
+		font-size: 32px;
+	}
 }

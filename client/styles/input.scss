@@ -100,9 +100,9 @@ textarea{
 
 
 .button{
-	background-color: $hilight-color;
-	color: white;
-	padding: 15px 25px;
+	// background-color: $hilight-color;
+	// color: white;
+	// padding: 15px 25px;
 	outline: none;
 	border:none;
 	transition: 0.4s;
@@ -110,6 +110,6 @@ textarea{
 	&:hover, &:focus, &:active{
 		outline:none;
 		border:none;
-		background-color: lighten($hilight-color, 10);
+		// background-color: lighten($hilight-color, 10);
 	}
 }
