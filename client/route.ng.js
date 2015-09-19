@@ -50,11 +50,6 @@ function routeConfig($stateProvider, $urlRouterProvider) {
           } else {
             throw 'Location not found';
           }
-        },
-        products: function ($meteor, location) {
-          return $meteor.subscribe('products', location._id).then(function () {
-            return $meteor.collection(Products);
-          });
         }
       },
       templateUrl: 'client/views/location/location.ng.html',

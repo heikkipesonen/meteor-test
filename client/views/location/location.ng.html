@@ -8,32 +8,28 @@
 		<div class="col-xs-12 no-gutter view-content-white view-shadow-lt-sm">
 				<div class="view-text-container view-content">
 					<div class="view-title-wrapper">
-						<p class="subtitle text-center" ng-bind="location.point.type"></p>
-						<h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.point.name"></h2>
+						<p class="subtitle text-center" ng-bind="::location.location.type"></p>
+						<h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="::location.location.name"></h2>
+						<!-- <h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.selectedDay.start_datetime | date : 'dd.MM.yyyy'"></h2> -->
 					</div>
 				</div>
 
-				<table class="calendar calendar-month">
-					<tr ng-repeat="(dayIndex, day) in location.calendar track by dayIndex"
+				<product-list class="col-xs-12 no-gutter list-products" ng-model="location.products"></product-list>
+
+<!-- 				<div class="calendar" layout="row">
+					<div ng-repeat="(dayIndex, day) in location.calendar | limitTo : 3 track by dayIndex"
+					flex
+					layout="column"
+					layout-align="center center"
 					ng-click="location.selectDay(day)"
+					class="calendar-select"
 					ng-class="{'selected' : location.selectedDay === day}">
-						<td>{{day.start_datetime | date : 'dd.MM.yyyy'}}</td>
-						<td>{{day.start_datetime | date : 'hh:mm'}}</td>
-						<td>{{day.end_datetime | date : 'hh:mm'}}</td>
-					</tr>
-				</table>
-
-				<div class="col-xs-12 no-gutter list-products">
-					<!-- <h4 class="sub-header text-center">Tuotteet</h4> -->
-<!-- 					<div class="product-types" ng-repeat="(typeIndex, type) in location.availableTypes track by typeIndex">
-						<h4 ng-bind="::type"></h4>
-					</div> -->
-					<div class="product-list">
-						<product
-							ng-repeat="product in location.products track by product._id"
-							ng-model="product"></product>
+						<div>{{day.start_datetime | date : 'dd.MM.yyyy'}}</div>
+						<div>{{day.start_datetime | date : 'hh:mm'}}&nbsp;-&nbsp;{{day.end_datetime | date : 'hh:mm'}}</div>
 					</div>
 				</div>
+ -->
+
 
 		</div>
 	</div>

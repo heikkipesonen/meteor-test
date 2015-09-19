@@ -1,15 +1,15 @@
 $product-info-width : 82px;
 
 .product{
+	@extend .animate;
 	font-size: 1rem;
 	background-color: white;
-
+	position: relative;
+	z-index: 1;
 
 	*{
 		pointer-events: none;
 	}
-
-
 
 	h3{
 		font-size: 1.3rem;
@@ -37,11 +37,6 @@ $product-info-width : 82px;
 		color: white;
 	}
 
-	position: relative;
-	z-index: 1;
-
-	@extend .animate;
-
 	&.controls-exposed{
 		transform: translate3d(50%, 0,0);
 
@@ -51,14 +46,9 @@ $product-info-width : 82px;
 	}
 }
 
-.product-data{
-	width: 100%;
-	background-color: #f7f7f7;
-}
 
 .product-wrapper{
 	position: relative;
-
 
 	&:first-of-type{
 		border-top: 1px solid $hilight-color;
