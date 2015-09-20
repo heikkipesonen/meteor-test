@@ -20,6 +20,10 @@
 		background-color: $view-background-color;
 	}
 }
+.view-content-hilight{
+	background-color: $hilight-color;
+	color: $hilight-background-text;
+}
 
 .no-gutter{
 	padding-left: 0;
@@ -33,6 +37,7 @@
 .view-content{
 	padding: 15px;
 }
+
 
 .view-shadow{
 	box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.3);

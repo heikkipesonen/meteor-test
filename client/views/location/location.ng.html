@@ -5,11 +5,12 @@
 	<div class="view view-has-footer view-shadow-gt-sm view-white-gt-sm" scroll-y>
 		<div class="view-header col-gt-sm-hide" ng-click="location.back()"></div>
 
-		<div class="col-xs-12 no-gutter view-content-background view-shadow-lt-sm">
-				<div class="view-text-container view-content">
-					<div class="view-title-wrapper">
-						<p class="subtitle text-center" ng-bind="::location.location.type"></p>
-						<h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="::location.location.name"></h2>
+		<div class="col-xs-12 no-gutter view-content-background view-shadow">
+				<div class="view-text-container view-content" layout="column" layout-align="center center">
+					<div class="location-title-image-container"></div>
+					<div class="view-title-wrapper text-center">
+						<p class="subtitle" ng-bind="::location.location.type"></p>
+						<h2 class="view-title text-strong text-uppercase" ng-bind="::location.location.name"></h2>
 						<!-- <h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.selectedDay.start_datetime | date : 'dd.MM.yyyy'"></h2> -->
 					</div>
 				</div>

@@ -10,7 +10,7 @@ h1,h2,h3,h4,h5 {
 	font-weight: 200;
 }
 
-.hilight{
+.hilight, .text-hilight{
 	color: $hilight-color;
 }
 
@@ -27,8 +27,7 @@ h1,h2,h3,h4,h5 {
 }
 
 .view-title-wrapper{
-	margin-top: 40px;
-	margin-bottom: 30px;
+
 
 	.view-title{
 		margin:0;
