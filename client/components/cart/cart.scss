@@ -2,7 +2,7 @@
 	position: absolute;
 	@extend .animate;
 	top: 100%;
-	margin-top: -42px;
+	margin-top: -$view-footer-size;
 	bottom: auto;
 	width: 100%;
 	padding: 0;
@@ -10,7 +10,7 @@
 	font-size: 10pt;
 
 	.cart-header{
-		height: $footer-bar-height;
+		height: $view-footer-size;
 	}
 
 	h4{
@@ -25,7 +25,7 @@
 
 	.cart-content{
 		padding: 0 10px;
-		background-color: white;
+		background-color: $view-background-color;
 	}
 
 	.cart-controls{
@@ -43,7 +43,7 @@
 
 .cart-products-list{
 	position: absolute;
-	top: 42px;
+	top: $view-header-size;
 	left:0;
 	right: 0;
 	bottom: 0;
@@ -52,23 +52,7 @@
 .cart-list{
 	position: relative;
 	width: 100%;
-	background-color: white;
-
-	// overflow: hidden;
-	// height: 60vh;
-	// transform: translate3d(0,100%,0);
-	// z-index: -1;
-	// @extend .animate;
-
-
-	// .cart-products-list{
-	// 	height: calc(100% - 42px);
-	// }
-
-	// &.cart-list-open{
-	// 	transform: translate3d(0,0,0);
-	// 	box-shadow: 0px -30px 30px -30px rgba(0,0,0,0.3);
-	// }
+	background-color: $list-background-color;
 
 	table{
 		width: 100%;
@@ -76,7 +60,7 @@
 	}
 
 	tr:nth-child(even){
-		background-color: #f7f7f7;
+		background-color: darken($view-background-color, 10);
 	}
 
 	td, th{

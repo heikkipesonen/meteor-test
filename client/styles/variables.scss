@@ -6,11 +6,23 @@ $ionicons-font-path: "packages/bower/ionicons/fonts";
 $ios-transition-timing-function: cubic-bezier(.3, .9, .4, 1) !default;
 $ios-transition-duration:              450ms !default;
 
+
+$view-background-color: #f7f7f7;
+$product-background-color: $view-background-color;
+
 $view-transition : $ios-transition-duration;
 $toolbar-width: 64px;
 $view-transition-timing-function-enter: $ios-transition-timing-function;
-$header-bar-height: 42px;
-$footer-bar-height: 42px;
+
+$view-header-size: 42px;
+$view-footer-size: 42px;
+$view-header-color: $hilight-color;
+$view-footer-color: $hilight-color;
+$view-header-bar-background: $view-background-color;
+$view-footer-bar-background: $view-background-color;
+
+$list-background-color: $view-background-color;
+$list-stripe-color: darken($view-background-color, 10);
 
 
 $screen-sm: 800px;
