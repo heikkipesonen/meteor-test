@@ -1,28 +1,5 @@
-$view-header-size: 42px;
-
-.view-header-top{
-	position: absolute;
-	top:0;
-	left:0;
-	right: 0;
-	height: $view-header-size;
-	line-height: $view-header-size;
+.view-header-bar, .view-footer-bar{
 	background-color: white;
 	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-
-	i{
-		display: block;
-		width: $view-header-size;
-		text-align: center;
-		font-size: $view-header-size * 0.75;
-	}
-}
-
-.view.view-has-header{
-	top:$view-header-size;
-}
-
-.view-child-has-header>.view{
-	top: $view-header-size;
+	z-index: 5;
 }

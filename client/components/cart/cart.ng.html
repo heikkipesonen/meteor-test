@@ -1,4 +1,26 @@
-<div class="cart cart-content col-xs-12" layout="row" layout-align="center center">
-	<div class="cart-count" ng-bind="cart.getCount()"></div>
-	<div flex class="cart-sum text-center" ng-bind="cart.getSum()"></div>
+<div class="cart" layout="column">
+	<div class="cart-content" layout="row" layout-align="center center">
+		<i class="ion-ios-cart-outline"></i>
+		<h4 flex class="cart-count text-center text-light" ng-bind="'Tuotteita: '+cart.cart.getCount() + '&nbsp;kpl'"></h4>
+		<h4 flex class="cart-sum text-center text-light" ng-bind="'Yhteensä: '+cart.cart.getSum() + '&nbsp;€'"></h4>
+		<i class="ion-ios-more"></i>
+	</div>
+
+	<div class="cart-content cart-list">
+		<table>
+			<tr>
+				<th>kpl</th>
+				<th>nimi</th>
+				<th>hinta</th>
+				<th>yhteensä</th>
+			</tr>
+			<tr class="cart-product" ng-repeat="(productIndex, product) in cart.cart.list track by productIndex">
+				<td ng-bind="product._count"></td>
+				<td ng-bind="product.name"></td>
+				<td ng-bind="product._unit_cost + '&nbsp;€ / '+ product.package_size + '&nbsp;' + product.unit"></td>
+
+				<td ng-bind="product._sum + '&nbsp;€'"></td>
+			</tr>
+		</table>
+	</div>
 </div>

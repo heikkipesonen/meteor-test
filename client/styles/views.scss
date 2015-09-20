@@ -1,6 +1,38 @@
 $view-transition : $ios-transition-duration;
-$toolbar-width: 64px;
-$view-transition-timing-function-enter: $ios-transition-timing-function;
+$toolbar-width: 64px !default;
+$view-transition-timing-function-enter: $ios-transition-timing-function !default;
+$header-bar-height: 42px !default;
+$footer-bar-height: 42px !default;
+
+.view-header-bar{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	height: $header-bar-height;
+	line-height: $header-bar-height;
+	font-size: $header-bar-height * 0.65;
+}
+
+.view-footer-bar{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: $footer-bar-height;
+	line-height: $footer-bar-height;
+	font-size: $footer-bar-height * 0.65;
+}
+
+.view-header-bar, .view-footer-bar{
+	z-index: 10;
+	padding: 10px;
+
+	i{
+		display: block;
+		text-align: center;
+	}
+}
 
 .view {
 	position: absolute;
@@ -12,8 +44,22 @@ $view-transition-timing-function-enter: $ios-transition-timing-function;
 	height: auto;
 	overflow: hidden;
 
-	&.has-toolbar{
-		bottom:$toolbar-width;
+
+	.view-child-has-header>.view{
+		top: $header-bar-height;
+	}
+
+	.view-child-has-footer>.view{
+		bottom: $header-bar-height;
+	}
+
+
+	&.view-has-header{
+		top: $header-bar-height;
+	}
+
+	&.view-has-footer{
+		bottom: $footer-bar-height;
 	}
 
 	@media (min-width: $screen-sm){

@@ -6,7 +6,7 @@
     .controller('LocationController', LocationController);
 
   /** @ngInject */
-  function LocationController($scope, location, $timeout, $state, $meteor) {
+  function LocationController($scope, location, $timeout, $state, $meteor, carts) {
     var vm = this;
     vm.location = location;
 
@@ -14,6 +14,7 @@
     vm.$meteor = $meteor;
     vm.$timeout = $timeout;
     vm.$state = $state;
+    vm.cart = carts.addCart(vm.location._id);
 
     // location.active.sort(function (a,b) {
     //   return a.start_datetime - b.start_datetime;

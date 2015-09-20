@@ -2,7 +2,7 @@
 	<div class="view-header marker-bounding-box" ng-click="location.back()"></div>
 	<div class="view-content-white col-gt-sm-hide" flex></div>
 
-	<div class="view view-shadow-gt-sm view-white-gt-sm" scroll-y>
+	<div class="view view-has-footer view-shadow-gt-sm view-white-gt-sm" scroll-y>
 		<div class="view-header col-gt-sm-hide" ng-click="location.back()"></div>
 
 		<div class="col-xs-12 no-gutter view-content-white view-shadow-lt-sm">
@@ -14,7 +14,7 @@
 					</div>
 				</div>
 
-				<product-list class="col-xs-12 no-gutter list-products" ng-model="location.products"></product-list>
+				<product-list class="col-xs-12 no-gutter list-products" ng-model="location.products" cart="location.cart"></product-list>
 
 <!-- 				<div class="calendar" layout="row">
 					<div ng-repeat="(dayIndex, day) in location.calendar | limitTo : 3 track by dayIndex"
@@ -33,4 +33,6 @@
 
 		</div>
 	</div>
+
+	<shopping-cart class="view-footer-bar" cart="location.cart"></shopping-cart>
 </div>
