@@ -6,6 +6,13 @@ $ionicons-font-path: "packages/bower/ionicons/fonts";
 $ios-transition-timing-function: cubic-bezier(.3, .9, .4, 1) !default;
 $ios-transition-duration:              450ms !default;
 
+$view-transition : $ios-transition-duration;
+$toolbar-width: 64px;
+$view-transition-timing-function-enter: $ios-transition-timing-function;
+$header-bar-height: 42px;
+$footer-bar-height: 42px;
+
+
 $screen-sm: 800px;
 $screen-md: 1000px;
 $screen-lg: 1200px;

@@ -20,12 +20,56 @@ angular
 
 
 
-  function ShoppingCartController (productCalculator) {
+  function ShoppingCartController ($scope, productCalculator, $timeout) {
     var vm = this;
     vm.productCount = 0;
     vm.total = 0;
     vm.calculator = productCalculator;
+    vm.$scope = $scope;
+
+    // drag view options for cart content
+    vm.$scope.dragViewOptions = {
+      axis:{
+        x:false,
+        y:{
+          min: -(window.innerHeight-84),
+          max:0,
+          tension:true
+        }
+      }
+    };
   }
+
+  /**
+   * open shoppingcart as full view
+   */
+  ShoppingCartController.prototype.setOpen = function () {
+    var vm = this;
+    vm.$scope.$dragView.options.offset.y = vm.$scope.dragViewOptions.axis.y.min;
+    vm.$scope.$dragView.setPosition(vm.$scope.dragViewOptions.returnAnimationDuration);
+  };
+
+  /**
+   * close the thing
+   */
+  ShoppingCartController.prototype.setClosed = function () {
+    var vm = this;
+    vm.$scope.$dragView.options.offset.y = vm.$scope.dragViewOptions.axis.y.max;
+    vm.$scope.$dragView.setPosition(vm.$scope.dragViewOptions.returnAnimationDuration);
+  };
+
+  /**
+   * toggle thing
+   * @return {[type]} [description]
+   */
+  ShoppingCartController.prototype.toggleOpen = function () {
+    var vm = this;
+    if (vm.$scope.dragViewOptions.offset.y === vm.$scope.dragViewOptions.axis.y.min){
+      vm.setClosed();
+    } else {
+      vm.setOpen();
+    }
+  };
 
   // ShoppingCartController.prototype.getList= function () {
   //   return vm.calculator.getList(vm.cart.products);

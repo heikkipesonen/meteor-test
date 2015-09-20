@@ -1,11 +1,22 @@
-(function(){
+(function () {
 	'use strict';
 
-	function DragViewController($scope, $element, $q, $timeout){
 
-		this.options = {
+	/**
+	 * includes some sketchy things, options extending and so on
+	 * because no isolated scope cannot be created from this
+	 *
+	 * @param {[type]} $scope   [description]
+	 * @param {[type]} $element [description]
+	 * @param {[type]} $attrs   [description]
+	 * @param {[type]} $q       [description]
+	 * @param {[type]} $timeout [description]
+	 */
+	function DragViewController($scope, $element, $attrs, $q, $timeout){
+		var vm = this;
+		vm.defaultOptions = {
 			// how many pixels per ms should be enough to trigger view change
-			changeVelocity:0.8,
+			changeVelocity:0.1,
 
 			 // ratio of drag distance to width or height (dependin on the direction)
 			 // until a view change is triggered
@@ -23,50 +34,65 @@
 			// animation duration when view returns to its original position
 			returnAnimationDuration:400,
 
-			directions:{
-				up: true,
-				down: true,
-				left: true,
-				right: true
+			offset:{
+				x: 0,
+				y: 0
+			},
+
+			axis:{
+				x:{
+					min: 0,
+					max: 0,
+					tension: true
+				},
+				y:{
+					min:0,
+					max:0,
+					tension: true
+				}
 			}
 		};
 
-		this.$timeout = $timeout;
-		this.$scope = $scope;
+		vm.$timeout = $timeout;
+		vm.$scope = $scope;
+		vm.$scope.$dragView = vm;
+
+		// very sketchy hax
+		vm.options = _.defaults(vm.$scope.dragViewOptions || {}, vm.defaultOptions);
 		// .options.directions = directionManager;
 
+		vm.el = $element[0];
+		// vm.options.offset = { x:0, y:0 };
+		vm.delta = { x:0, y:0 };
+		vm.lastEvent = false;
+		// vm.width = null;
+		// vm.height = null;
+		vm.direction = null;
+		vm.timer = false;
+		vm.velocity = { x:0,y:0 }; // current event velocity (px/ms)
 
-		this.el = $element[0];
-		this.offset = {x:0, y:0};
-		this.delta = {x:0, y:0};
-		this.lastEvent = false;
-		this.width = null;
-		this.height = null;
-		this.direction = null;
-		this.timer = false;
-		this.velocity = {x:0,y:0}; // current event velocity (px/ms)
 
-		var me = this;
+
 		// set initial values
-		this.setPosition();
+		vm.setPosition();
 
 		// bind to events
-		this.el.addEventListener('touchstart', function touchStart(evt){me.dragStart(evt);});
-		this.el.addEventListener('touchmove', function touchMove(evt){me.dragMove(evt);});
-		this.el.addEventListener('touchend', function touchEnd(evt){me.dragEnd(evt);});
+		vm.el.addEventListener('touchstart', function touchStart(evt){vm.dragStart(evt);});
+		vm.el.addEventListener('touchmove', function touchMove(evt){vm.dragMove(evt);});
+		vm.el.addEventListener('touchend', function touchEnd(evt){vm.dragEnd(evt);});
 	}
 
 	DragViewController.prototype = {
-				/**
+		/**
 		 * get cursor position of touch or mouse event
 		 * @param  {event} evt
 		 * @return {object}     {x: int, y: int}
 		 */
-		getCursor:function(evt){
+		getCursor:function (evt) {
 			if (evt.touches.length > 0){
-				return {x:evt.touches[0].pageX, y:evt.touches[0].pageY, timeStamp:evt.timeStamp};
+				return { x:evt.touches[0].pageX, y:evt.touches[0].pageY, timeStamp:evt.timeStamp };
 			} else {
-				return {x:evt.pageX, y:evt.pageY, timeStamp:evt.timeStamp};
+				return { x:evt.pageX, y:evt.pageY, timeStamp:evt.timeStamp };
 			}
 		},
 		/**
@@ -74,15 +100,11 @@
 		 * @param {int} duration animation duration in milliseconds
 		 * @return {Promise}
 		 */
-		setPosition:function(duration){
-			// excessive ui animation
-			// var scale = 1-( Math.abs( this.offset.x ) / (this.width * 10) || this.offset.x);
-			// var rotation = 90*( Math.abs( this.offset.x ) / (this.width ) || this.offset.x);
-			// console.log(rotation)
-
-			this.el.style.transition = duration ? duration +'ms' : '';
-			this.el.style.transform = 'translate3d('+this.offset.x+'px,'+this.offset.y+'px,0)';
-			this.el.style['-webkit-transform'] = 'translate3d('+this.offset.x+'px,'+this.offset.y+'px,0)';
+		setPosition:function (duration) {
+			var vm = this;
+			vm.el.style.transition = duration ? duration +'ms' : '0ms';
+			vm.el.style.transform = 'translate3d('+vm.options.offset.x+'px,'+vm.options.offset.y+'px,0)';
+			vm.el.style['-webkit-transform'] = 'translate3d('+vm.options.offset.x+'px,'+vm.options.offset.y+'px,0)';
 		},
 
 		/**
@@ -91,7 +113,7 @@
 		 * drag direction
 		 * @return {string} name of the side, up,down,left,right
 		 */
-		getExposedSide:function(){
+		getExposedSide:function () {
 			var d = null;
 			if (this.direction === 'y'){
 				d = this.delta.y > 0 ? 'up' : this.delta.y < 0 ? 'down' : null;
@@ -105,7 +127,7 @@
 		 * cancel timer
 		 * @return {null}
 		 */
-		endTimer:function(){
+		endTimer:function () {
 			if (this.timer) this.$timeout.cancel(this.timer);
 		},
 
@@ -115,12 +137,12 @@
 		 * @default 500
 		 * @return {object}       promise, timer object
 		 */
-		startTimer:function(delay){
+		startTimer:function (delay) {
 			var me = this;
 			this.endTimer();
 
-			this.timer = this.$timeout(function(){
-				me.$scope.$emit('drag.hold.'+ me.getExposedSide() );
+			this.timer = this.$timeout(function () {
+				me.$scope.$emit('drag.hold.'+ me.getExposedSide());
 			}, delay || 500);
 
 			return this.timer;
@@ -133,12 +155,12 @@
 		 * @param  {mouse event} evt
 		 * @return {void}
 		 */
-		dragStart:function(evt){
+		dragStart:function (evt) {
 			// var style = window.getComputedStyle(this.el);
 			// this.width = _.parseInt( style.width );
 			// this.height = _.parseInt( style.height );
-			this.width = this.el.offsetWidth;
-			this.height = this.el.offsetHeight;
+			// this.width = this.el.offsetWidth;
+			// this.height = this.el.offsetHeight;
 			this.lastEvent = this.getCursor(evt);
 			this.delta.x = 0;
 			this.delta.y = 0;
@@ -151,7 +173,7 @@
 		 * @param  {mouseevent} evt
 		 * @return {void}
 		 */
-		dragMove:function(evt){
+		dragMove:function (evt) {
 			// get current cursor position
 			var currentPosition = this.getCursor(evt);
 
@@ -184,31 +206,48 @@
 					evt.stopPropagation();
 					evt.preventDefault();
 
-					// if nothing can be get from the side, apply rubberband-like tension
-					var tensionX = (!this.options.directions.left && stepx > 0 && this.offset.x > 0 ) || (!this.options.directions.right && stepx < 0 && this.offset.x < 0) ? this.options.tension : 1;
-					var tensionY = (!this.options.directions.up && stepy > 0 && this.offset.y > 0) || (!this.options.directions.down && stepy < 0 && this.offset.y < 0) ? this.options.tension : 1;
+					// movementMultiplier = amount of tension or stop moving if axis is disabled
+					var movementMultiplierX = this.options.axis.x ? 1 : 0;
+					var movementMultiplierY = this.options.axis.y ? 1 : 0;
 
-					stepx = stepx*tensionX;
-					stepy = stepy*tensionY;
+					// if axis x is enabled, and things happen
+					// apply tension
+					//
+					// otherwise move as requested
+					if (this.options.axis.x){
+						if (this.options.offset.x <= this.options.axis.x.min || this.options.offset.x >= this.options.axis.x.max){
+							movementMultiplierX = this.options.axis.x.tension ? this.options.tension : 0;
+						}
+					}
+
+					if (this.options.axis.y){
+						if (this.options.offset.y <= this.options.axis.y.min || this.options.offset.y >= this.options.axis.y.max){
+							movementMultiplierY = this.options.axis.y.tension ? this.options.tension : 0;
+						}
+					}
+
+					// apply multiplier
+					stepx = stepx*movementMultiplierX;
+					stepy = stepy*movementMultiplierY;
 
 					if (this.direction === 'x'){
 						// detect hold event on horizontal axis
 						// the page has been dragged and held (touch event does not end)
-						if (stepx > 0 && this.offset.x > 0 ||  stepx < 0 && this.offset.x < 0){
+						if (stepx > 0 && this.options.offset.x > 0 ||  stepx < 0 && this.options.offset.x < 0){
 							this.startTimer();
 						}
 
 						// set offset x if this.direction is horizontal
-						this.offset.x += stepx;
+						this.options.offset.x += stepx;
 					} else if (this.direction === 'y'){
 
 						// detect hold event on vertical  axis
-						if (stepy > 0 && this.offset.y > 0 ||  stepy < 0 && this.offset.y < 0){
+						if (stepy > 0 && this.options.offset.y > 0 ||  stepy < 0 && this.options.offset.y < 0){
 							this.startTimer();
 						}
 
 						// set offset y if this.direction is vertical
-						this.offset.y += stepy;
+						this.options.offset.y += stepy;
 					}
 
 					this.setPosition();
@@ -220,83 +259,51 @@
 			}
 		},
 
-		setAnimationDirection: function(direction) {
-
-		},
-
-		go:function(direction) {
-
-		},
-
-	/**
-		 * drag ends (mouseup, touchend)
-		 * @param  {mouseevent} evt
-		 * @return {void}
-		 */
-		dragEnd:function(){
+		/**
+			 * drag ends (mouseup, touchend)
+			 * @param  {mouseevent} evt
+			 * @return {void}
+			 */
+		dragEnd:function () {
 			this.endTimer();
 			this.lastEvent = false;
 
-			// ratio of page dimensios related to drag distance
-			// used for calulcating if page should be changed
-			var movedRatio = {x: this.offset.x / this.width, y: this.offset.y / this.height };
 
-			// minimum drag threshold must be overcome until change
-			if (Math.abs(this.offset.x) > this.options.minimumDragDistance || Math.abs(this.offset.y) > this.options.minimumDragDistance){
 
-				/**
-				 * decide action when dragging has stopped
-				 */
-				if (Math.abs(movedRatio.y) > this.options.changeDragDistance || Math.abs(this.velocity.y) > this.options.changeVelocity){
-					// if drag was down (moved < 0 and there is something down of here)
-					if (movedRatio.y < 0 && this.options.directions.down){
-						// set animation to down
-						this.setAnimationDirection('down');
+			var currentOffsetY = this.options.offset.y;
+			var currentOffsetX = this.options.offset.x;
 
-						// init state change
-						this.go('down');
+			// which position is closes to current?
+			var diffToYMin = Math.abs(this.options.axis.y.min - this.options.offset.y);
+			var diffToYMax = Math.abs(this.options.axis.y.max - this.options.offset.y);
 
-						// set element offset
-						this.offset.y = -this.height;
-						// animate to offset
-						this.setPosition(this.options.leaveAnimationDuration);
-						return;
-					} else if (movedRatio.y > 0 && this.options.directions.up){ // drag was up
-						this.setAnimationDirection('up');
-						this.go('up');
-						this.offset.y = this.height;
-						this.setPosition(this.options.leaveAnimationDuration);
-						return;
-					}
+			var diffToXMin = Math.abs(this.options.axis.x.min - this.options.offset.x);
+			var diffToXMax = Math.abs(this.options.axis.x.max - this.options.offset.x);
 
-				}
+			var offsetY = this.options.axis.y ? diffToYMin < diffToYMax ? this.options.axis.y.min : this.options.axis.y.max : 0;
+			var offsetX = this.options.axis.x ? diffToXMin < diffToXMax ? this.options.axis.x.min : this.options.axis.x.max : 0;
 
-				// left and right dragging
-				if (Math.abs(movedRatio.x) > this.options.changeDragDistance || Math.abs(this.velocity.x) > this.options.changeVelocity){
-					if (movedRatio.x < 0 && this.options.directions.right){
-						this.setAnimationDirection('forward');
-						this.go('right');
-
-						this.offset.x = -this.width;
-						this.setPosition(this.options.leaveAnimationDuration);
-						return;
-					} else if (movedRatio.x > 0 && this.options.directions.left){
-						this.setAnimationDirection('back');
-						this.go('left');
-
-						this.offset.x = this.width;
-						this.setPosition(this.options.leaveAnimationDuration);
-						return;
-					}
-				}
+			// if change should be triggered anyway?
+			// ie moved to min / max position
+			// changevelocity exceeded
+			if (this.options.axis.y && Math.abs(this.velocity.y) > this.options.changeVelocity){
+				offsetY = this.velocity.y < 0 ? this.options.axis.y.min : this.options.axis.y.max;
 			}
+
+			if (this.options.axis.x && Math.abs(this.velocity.x) > this.options.changeVelocity){
+				offsetX = this.velocity.x < 0 ? this.options.axis.x.min : this.options.axis.x.max;
+			}
+
+
+			this.options.offset.x = offsetX;
+			this.options.offset.y = offsetY;
 
 
 			// reset variables (drag end)
 			this.velocity.x = 0;
 			this.velocity.y = 0;
-			this.offset.x = 0;
-			this.offset.y = 0;
+			// this.options.offset.x = 0;
+			// this.options.offset.y = 0;
 
 			// set element position to zero (css actually overrides this to disable flickering)
 			this.setPosition(this.options.returnAnimationDuration);
@@ -304,11 +311,11 @@
 	};
 
 
-angular.module('dragview', [])
+	angular.module('dragview', [])
 
-	.controller('DragViewController', DragViewController)
+		.controller('DragViewController', DragViewController)
 
-	.directive('dragView', function(){
+	.directive('dragView', function () {
 		return {
 			restrict:'A',
 			controller:'DragViewController'
