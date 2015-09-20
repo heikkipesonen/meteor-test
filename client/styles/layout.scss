@@ -11,13 +11,13 @@
 }
 
 
-.view-content-white, .view-white{
-	background-color: white;
+.view-content-background, .view-background{
+	background-color: $view-background-color;
 }
 
-.view-content-white-gt-sm,.view-white-gt-sm{
+.view-content-background-gt-sm,.view-background-gt-sm{
 	@media (min-width: $screen-sm) {
-		background-color: white;
+		background-color: $view-background-color;
 	}
 }
 

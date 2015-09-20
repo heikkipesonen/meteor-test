@@ -5,11 +5,6 @@ angular
 function routeConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('testi', {
-      url: '/testi',
-      templateUrl: 'client/views/testi/testi.ng.html'
-    })
-
     .state('root', {
       abstract: true,
       templateUrl: 'client/views/root/root.ng.html',

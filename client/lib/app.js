@@ -8,9 +8,10 @@ angular
     'ngTouch',
     'ngSanitize',
     'ui.router',
+    'lahiruoka.common',
     'maps',
     'imageUtils',
     'scroll',
     'slidelist',
-    'lahiruoka.common'
+    'dragview'
   ]);

@@ -1,6 +1,42 @@
 $view-transition : $ios-transition-duration;
-$toolbar-width: 64px;
-$view-transition-timing-function-enter: $ios-transition-timing-function;
+$toolbar-width: 64px !default;
+$view-transition-timing-function-enter: $ios-transition-timing-function !default;
+$view-header-size: 42px !default;
+$view-footer-size: 42px !default;
+
+.view-header-bar{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	height: $view-header-size;
+	line-height: $view-header-size;
+	font-size: $view-header-size * 0.65;
+	background-color: $view-header-bar-background;
+	color: $view-header-color;
+}
+
+.view-footer-bar{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: $view-footer-size;
+	line-height: $view-footer-size;
+	font-size: $view-footer-size * 0.65;
+	background-color: $view-footer-bar-background;
+	color: $view-footer-color;
+}
+
+.view-header-bar, .view-footer-bar{
+	z-index: 10;
+	padding: 10px;
+
+	i{
+		display: block;
+		text-align: center;
+	}
+}
 
 .view {
 	position: absolute;
@@ -12,8 +48,22 @@ $view-transition-timing-function-enter: $ios-transition-timing-function;
 	height: auto;
 	overflow: hidden;
 
-	&.has-toolbar{
-		bottom:$toolbar-width;
+
+	.view-child-has-header>.view{
+		top: $view-header-size;
+	}
+
+	.view-child-has-footer>.view{
+		bottom: $view-header-size;
+	}
+
+
+	&.view-has-header{
+		top: $view-header-size;
+	}
+
+	&.view-has-footer{
+		bottom: $view-footer-size;
 	}
 
 	@media (min-width: $screen-sm){
@@ -79,6 +129,7 @@ $view-transition-timing-function-enter: $ios-transition-timing-function;
 }
 
 [scroll-y]{
+	max-height: 100%;
 	overflow: hidden;
 	overflow-y: auto !important;
 	-webkit-overflow-scrolling: touch;

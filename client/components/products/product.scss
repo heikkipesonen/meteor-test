@@ -3,7 +3,7 @@ $product-info-width : 82px;
 .product{
 	@extend .animate;
 	font-size: 1rem;
-	background-color: white;
+	background-color: $product-background-color;
 	position: relative;
 	z-index: 1;
 

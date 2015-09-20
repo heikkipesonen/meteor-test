@@ -5,8 +5,7 @@
     .module('lahiruoka')
     .controller('LocationController', LocationController);
 
-  /** @ngInject */
-  function LocationController($scope, $timeout, $state, $stateParams, $meteor, Products) {
+  function LocationController($scope, $timeout, $state, $stateParams, $meteor, Products, carts) {
     var vm = this;
 
     vm.location = $scope.$meteorObject(Locations, {
@@ -16,7 +15,24 @@
     vm.$meteor = $meteor;
     vm.$timeout = $timeout;
     vm.$state = $state;
-    vm.Products = Products;
+    vm.cart = carts.addCart($stateParams._id);
+
+    // location.active.sort(function (a,b) {
+    //   return a.start_datetime - b.start_datetime;
+    // });
+
+    // var now = moment();
+    // var until = moment().add(100,'days');
+
+    // vm.calendar = _.filter(location.active, function (activeTime) {
+    //   var start = moment(activeTime.start_datetime);
+    //   var end = moment(activeTime.end_datetime);
+
+    //   return start.isBefore(until) && end.isAfter(now);
+    // });
+
+
+    // vm.selectDay(_.first(vm.calendar));
 
     $timeout(function () {
       var mbb = document.querySelector('.marker-bounding-box');
