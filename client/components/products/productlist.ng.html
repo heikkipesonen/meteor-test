@@ -5,20 +5,22 @@
     <div class="button text-center" ng-click="productList.addToCart(product)" flex><i class="ion-ios-plus-outline"></i></div>
   </div>
 
-  <div class="product" layout="row"
+  <div class="product"
+    layout="row"
+    layout-align="center center"
     ng-class="{'controls-exposed' : productList.isExposed(product)}"
     ng-click="productList.exposeProduct(product)">
 
-    <div class="product-info text-right">
-      <h3 class="product-price" ng-bind="::productList.calculator.getPrice(product) + '&nbsp;€'"></h3>
-      <h4 class="product-property" ng-bind="product.available"></h4>
-      <h4 class="product-propert" ng-bind="::product.type"></h4>
+    <div class="product-image-wrapper">
     </div>
 
-    <div class="product-content" flex>
-      <h3 class="product-title" ng-bind="::product.name + '&nbsp;' + product.package_size + product.unit"></h3>
+    <div class="product-info" flex>
+      <h3 class="product-title" ng-bind="::product.name + '&nbsp;' + product.package_size + '&nbsp;' + product.unit"></h3>
       <p class="product-description" ng-bind="::product.description"></p>
-      <!-- <p class="product-manufacturer" ng-bind="::product.producer_id"></p> -->
-    </div>
+      <h4 class="product-property" ng-bind="product.available"></h4>
+        <!-- <p class="product-manufacturer" ng-bind="::product.producer_id"></p> -->
+      <h3 class="product-price hilight" ng-bind="::productList.calculator.getPrice(product) + '&nbsp;€'"></h3>
+     </div>
+
   </div>
  </div>
