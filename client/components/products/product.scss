@@ -30,13 +30,6 @@ $product-info-width : 82px;
 		font-size: 1.62rem;
 	}
 
-	.product-info, .product-content{
-		padding: $grid-gutter-width 0 $grid-gutter-width $grid-gutter-width;
-	}
-
-	.product-info{
-
-	}
 
 	&.controls-exposed{
 		transform: translate3d(50%, 0,0);
@@ -47,6 +40,12 @@ $product-info-width : 82px;
 	}
 }
 
+
+.product-info{
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
 
 .product-image-wrapper{
 	position: relative;
