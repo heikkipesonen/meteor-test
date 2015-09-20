@@ -59,7 +59,6 @@ angular.module('lahiruoka')
 		var vm = this;
 		vm.products.push(product);
 		vm.getList();
-		console.log(vm.list);
 	};
 
 
