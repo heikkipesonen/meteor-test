@@ -6,41 +6,26 @@
     .controller('LocationController', LocationController);
 
   /** @ngInject */
-  function LocationController($scope, location, $timeout, $state, $meteor, Products) {
+  function LocationController($scope, $timeout, $state, $stateParams, $meteor, Products) {
     var vm = this;
-    vm.location = location;
 
+    vm.location = $scope.$meteorObject(Locations, {
+      _id: $stateParams._id
+    }, false);
 
     vm.$meteor = $meteor;
     vm.$timeout = $timeout;
     vm.$state = $state;
     vm.Products = Products;
 
-    // location.active.sort(function (a,b) {
-    //   return a.start_datetime - b.start_datetime;
-    // });
-
-    // var now = moment();
-    // var until = moment().add(100,'days');
-
-    // vm.calendar = _.filter(location.active, function (activeTime) {
-    //   var start = moment(activeTime.start_datetime);
-    //   var end = moment(activeTime.end_datetime);
-
-    //   return start.isBefore(until) && end.isAfter(now);
-    // });
-
-
-    // vm.selectDay(_.first(vm.calendar));
-
-    //$timeout(function () {
+    $timeout(function () {
       var mbb = document.querySelector('.marker-bounding-box');
       var box = [mbb.offsetWidth, mbb.offsetHeight];
       $scope.$emit('map.setMarkerCenterOn', vm.location, box);
-    //}, 0);
+    }, 400);
 
-    $meteor.subscribe('products', location._id);
-    vm.products = $meteor.collection(Products);
+    $scope.$meteorSubscribe('products', $stateParams._id);
+    vm.products = $scope.$meteorCollection(Products);
   }
 
   LocationController.prototype.selectDay = function (day) {

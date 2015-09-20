@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').run(function (Producers) {
+angular.module('lahiruoka.server').run(function (Producers) {
   Producers.allow({
     insert: function () {
       return true;
@@ -9,5 +9,11 @@ angular.module('lahiruoka.backend').run(function (Producers) {
     remove: function () {
       return true;
     }
+  });
+
+  Meteor.publish('producers', function (producerId) {
+    return Producers.find({
+      _id: producerId
+    });
   });
 });

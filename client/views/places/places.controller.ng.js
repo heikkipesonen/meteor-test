@@ -10,7 +10,7 @@
     var vm = this;
 
     $scope.$on('marker.click', function (evt, location) {
-      $state.go('root.location', { location: location._id });
+      $state.go('root.location', location);
     });
   }
 

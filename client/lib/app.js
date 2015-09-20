@@ -1,3 +1,6 @@
+// Overwrite default underscore in Meteor
+_ = lodash;
+
 angular
   .module('lahiruoka', [
     'angular-meteor',
@@ -9,5 +12,5 @@ angular
     'imageUtils',
     'scroll',
     'slidelist',
-    'lahiruoka.backend'
+    'lahiruoka.common'
   ]);

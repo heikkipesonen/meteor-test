@@ -1,3 +1,4 @@
 angular.bootstrap([
-  'lahiruoka.backend'
+  'lahiruoka.common',
+  'lahiruoka.server'
 ]);

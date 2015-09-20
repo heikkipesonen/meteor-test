@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').service('Products', function () {
+angular.module('lahiruoka.common').service('Products', function () {
   Products = new Mongo.Collection('products');
 
   Products.CATEGORIES = ['meat', 'fish', 'chicken', 'vegetable', 'eggs', 'seasoning'];

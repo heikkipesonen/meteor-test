@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').run(function (Locations, Products, Producers, Users, chance) {
+angular.module('lahiruoka.server').run(function (Locations, Products, Producers, Users, chance) {
   Meteor.methods({
     'createTestData': function () {
       this.unblock();

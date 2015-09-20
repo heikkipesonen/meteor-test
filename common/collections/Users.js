@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').service('Users', function () {
+angular.module('lahiruoka.common').service('Users', function () {
   var EmailSchema = new SimpleSchema({
     address: {
         type: String,

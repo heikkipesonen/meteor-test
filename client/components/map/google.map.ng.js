@@ -1,5 +1,4 @@
 (function () {
-	var _ = lodash;
 	'use strict';
 
 	angular.module('maps')

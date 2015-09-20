@@ -1,5 +1,3 @@
-var _ = lodash;
-
 angular
   .module('lahiruoka')
   .config(routeConfig);
@@ -13,13 +11,6 @@ function routeConfig($stateProvider, $urlRouterProvider) {
     })
 
     .state('root', {
-      resolve: {
-        locations: function ($q, $meteor, Locations) {
-          return $meteor.subscribe('locations').then(function () {
-            return $meteor.collection(Locations);
-          });
-        }
-      },
       abstract: true,
       templateUrl: 'client/views/root/root.ng.html',
       controller: 'RootController',
@@ -41,17 +32,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
     })
 
     .state('root.location', {
-      url: '/places/:location',
-      resolve:{
-        location: function (locations, $q, $stateParams) {
-          var location = _.find(locations, '_id', $stateParams.location);
-          if (location) {
-            return location;
-          } else {
-            throw 'Location not found';
-          }
-        }
-      },
+      url: '/places/:_id',
       templateUrl: 'client/views/location/location.ng.html',
       controller: 'LocationController',
       controllerAs: 'location'

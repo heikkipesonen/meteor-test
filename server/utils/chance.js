@@ -1,3 +1,3 @@
-angular.module('lahiruoka.backend').service('chance', function () {
+angular.module('lahiruoka.server').service('chance', function () {
   return new Chance();
 });

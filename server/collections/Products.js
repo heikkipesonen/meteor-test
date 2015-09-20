@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').run(function (Products) {
+angular.module('lahiruoka.server').run(function (Products) {
   Products.allow({
     insert: function () {
       return true;
@@ -9,5 +9,11 @@ angular.module('lahiruoka.backend').run(function (Products) {
     remove: function () {
       return true;
     }
+  });
+
+  Meteor.publish('products', function (locationId) {
+    return Products.find({
+      location_id: locationId
+    });
   });
 });

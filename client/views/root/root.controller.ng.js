@@ -5,9 +5,11 @@ angular
   .controller('RootController', RootController);
 
 /** @ngInject */
-function RootController($scope, $state, $window, locations) {
+function RootController($scope, $state, $window, Locations, $meteor) {
   var vm = this;
   vm.$scope = $scope;
   vm.$state = $state;
-  vm.items = locations;
+
+  $scope.$meteorSubscribe('locations');
+  vm.items = $scope.$meteorCollection(Locations, false);
 }

@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').service('Producers', function (PositionSchema) {
+angular.module('lahiruoka.common').service('Producers', function (PositionSchema) {
   Producers = new Mongo.Collection('producers');
 
   Producers.TYPES = [

@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').run(function (Users) {
+angular.module('lahiruoka.server').run(function (Users) {
   Users.allow({
     insert: function () {
       return false;
@@ -9,5 +9,9 @@ angular.module('lahiruoka.backend').run(function (Users) {
     remove: function () {
       return false;
     }
+  });
+
+  Meteor.publish('users', function () {
+    return Users.find({});
   });
 });

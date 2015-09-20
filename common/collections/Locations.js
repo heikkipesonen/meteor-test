@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').service('Locations', function (PositionSchema) {
+angular.module('lahiruoka.common').service('Locations', function (PositionSchema) {
   Locations = new Mongo.Collection('locations');
 
   Locations.TYPES = ['market', 'meeting', 'farm'];

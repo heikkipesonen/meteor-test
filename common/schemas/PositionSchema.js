@@ -1,4 +1,4 @@
-angular.module('lahiruoka.backend').service('PositionSchema', function () {
+angular.module('lahiruoka.common').service('PositionSchema', function () {
   var PositionSchema = new SimpleSchema({
     lat: {
       type: Number,
