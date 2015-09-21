@@ -1,21 +1,22 @@
 <div class="view view-translate view-small" layout="column">
-	<div class="view-header marker-bounding-box" ng-click="location.back()"></div>
-	<div class="view-content-background col-gt-sm-hide" flex></div>
 
-	<div class="view view-has-footer" scroll-y layout="column">
+	<div class="view-header marker-bounding-box" ng-click="location.back()"></div>
+	<div class="view-background-gradient" flex></div>
+
+	<div class="view view-has-footer" scroll-y>
 		<div class="view-header" ng-click="location.back()"></div>
 
-		<div class="view-content-background view-shadow" flex>
-				<div class="view-text-container view-content" layout="column" layout-align="center center">
-					<div class="location-title-image-container"></div>
-					<div class="view-title-wrapper text-center">
+
+				<!-- <div class="view-text-container view-content-background view-content" layout="column" layout-align="center"> -->
+					<div class="view-title-wrapper view-shadow view-content-background" layout="column" layout-align="center">
+						<div class="location-title-image-container"></div>
 						<p class="subtitle" ng-bind="::location.location.type"></p>
 						<h2 class="view-title text-strong text-uppercase" ng-bind="::location.location.name"></h2>
 						<!-- <h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.selectedDay.start_datetime | date : 'dd.MM.yyyy'"></h2> -->
 					</div>
-				</div>
+				<!-- </div> -->
 
-				<product-list class="col-xs-12 no-gutter list-products" ng-model="location.products" cart="location.cart"></product-list>
+				<product-list class="list-products view-content-background " ng-model="location.products" cart="location.cart"></product-list>
 
 <!-- 				<div class="calendar" layout="row">
 					<div ng-repeat="(dayIndex, day) in location.calendar | limitTo : 3 track by dayIndex"
@@ -32,7 +33,7 @@
  -->
 
 
-		</div>
+
 	</div>
 
 	<shopping-cart class="view-footer-bar" cart="location.cart"></shopping-cart>

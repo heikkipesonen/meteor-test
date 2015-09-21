@@ -82,6 +82,7 @@ $product-info-width : 82px;
 	font-size: 32px;
 	z-index: 0;
 	color: $hilight-color;
+	background-color: #ddd;
 
 	@media (min-width: $screen-sm){
 		right: auto;

@@ -1,26 +1,28 @@
-<div class="product-wrapper" ng-repeat="product in productList.list track by product._id">
+<div class="product-list" layout="column">
+  <div class="product-wrapper" flex ng-repeat="product in productList.list track by product._id">
 
-  <div class="product-controls" layout="row" layout-align="center center">
-    <div class="button text-center" ng-click="productList.removeFromCart(product)" flex><i class="ion-ios-minus-outline"></i></div>
-    <div class="button text-center" ng-click="productList.addToCart(product)" flex><i class="ion-ios-plus-outline"></i></div>
-  </div>
-
-  <div class="product"
-    layout="row"
-    layout-align="center center"
-    ng-class="{'controls-exposed' : productList.isExposed(product)}"
-    ng-click="productList.exposeProduct(product)">
-
-    <div class="product-image-wrapper">
+    <div class="product-controls" layout="row" layout-align="center center">
+      <div class="button text-center" ng-click="productList.removeFromCart(product)" flex><i class="ion-ios-minus-outline"></i></div>
+      <div class="button text-center" ng-click="productList.addToCart(product)" flex><i class="ion-ios-plus-outline"></i></div>
     </div>
 
-    <div class="product-info" flex>
-      <h3 class="product-title" ng-bind="::product.name + '&nbsp;' + product.package_size + '&nbsp;' + product.unit"></h3>
-      <p class="product-description" ng-bind="::product.description"></p>
-      <h4 class="product-property" ng-bind="product.available"></h4>
-        <!-- <p class="product-manufacturer" ng-bind="::product.producer_id"></p> -->
-      <h3 class="product-price hilight" ng-bind="::productList.calculator.getPrice(product) + '&nbsp;€'"></h3>
-     </div>
+    <div class="product"
+      layout="row"
+      layout-align="center center"
+      ng-class="{'controls-exposed' : productList.isExposed(product)}"
+      ng-click="productList.exposeProduct(product)">
 
-  </div>
+      <div class="product-image-wrapper">
+      </div>
+
+      <div class="product-info" flex>
+        <h3 class="product-title" ng-bind="::product.name + '&nbsp;' + product.package_size + '&nbsp;' + product.unit"></h3>
+        <p class="product-description" ng-bind="::product.description"></p>
+        <h4 class="product-property" ng-bind="product.available"></h4>
+          <!-- <p class="product-manufacturer" ng-bind="::product.producer_id"></p> -->
+        <h3 class="product-price hilight" ng-bind="::productList.calculator.getPrice(product) + '&nbsp;€'"></h3>
+       </div>
+
+    </div>
+   </div>
  </div>

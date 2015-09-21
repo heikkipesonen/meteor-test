@@ -38,6 +38,7 @@ ProductListController.prototype.isExposed = function (product) {
 angular.module('lahiruoka')
 	.directive('productList', function () {
 		return {
+			replace:true,
 			restrict: 'AE',
 			scope:{},
 			bindToController:{
