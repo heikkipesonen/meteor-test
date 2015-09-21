@@ -49,7 +49,7 @@
 					position: new google.maps.LatLng(location.position.lat, location.position.lng),
 					// icon: 'images/marker-' + location.type + '.png',
 					icon: {
-						url:'images/marker-1-2x.png',
+						url:'images/marker-'+location.type+'-2x.png',
 						scaledSize: new google.maps.Size(64,64),
 					},
 					data:location
