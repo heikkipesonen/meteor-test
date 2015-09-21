@@ -1,23 +1,18 @@
-<div class="view view-root view-background view-fade view-landing">
-	<div class="view-background-image" image-loader="'images/bg-1.jpg'"></div>
-	<div class="view"  layout="column" layout-align="center center"  scroll-y>
-		<div class="view-content text-center view-bright">
-			<h2 class=" text-shadow header-main text-uppercase">Paskoja<br/>vihanneksija</h2>
+<div class="view view-root view-background view-content-hilight view-fade view-landing"  layout="column" layout-align="center center"  scroll-y>
+	<h2 class="header-main text-center text-uppercase">Paskoja<br/>vihanneksija</h2>
 
-			<ul class="list list-bordered list-large">
-				<li class="list-item" ui-sref="root.places">
-					<h3 class="list-item-title">Noutopaikat</h3>
-				</li>
-				<li class="list-item">
-					<h3 class="list-item-title">Tuotteet</h3>
-				</li>
-				<li class="list-item">
-					<h3 class="list-item-title">Tuottajat</h3>
-				</li>
-				<li class="list-item">
-					<h3 class="list-item-title">Rekisteröidy tuottajaksi</h3>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<ul class="list landing-icons text-center" layout="row">
+		<li flex="33" class="list-item list-item-icon" ui-sref="root.places">
+			<i class="ion-ios-location-outline"></i>
+			<h4 class="list-item-label text-light">Nouto&shy;paikat</h4>
+		</li>
+		<li flex="33" class="list-item list-item-icon">
+			<i class="ion-ios-home-outline"></i>
+			<h4 class="list-item-label text-light">Tuottajat</h4>
+		</li>
+		<li flex="33" class="list-item list-item-icon">
+			<i class="ion-ios-gear-outline"></i>
+			<h4 class="list-item-label text-light">Omat sivut</h4>
+		</li>
+	</ul>
 </div>
