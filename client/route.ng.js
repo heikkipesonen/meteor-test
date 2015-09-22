@@ -36,11 +36,25 @@ function routeConfig($stateProvider, $urlRouterProvider) {
     // this must be below the others
     // for the route to match 'places' and others first, and only then
     // look for producer_id
-    .state('root.producer', {
-      url:'/:_id',
+    .state('producer', {
+      url:'/tuottaja/:_id',
+      abstract:true,
       templateUrl: 'client/views/producer/producer.ng.html',
       controller: 'ProducerController',
       controllerAs: 'producer'
+    })
+
+    .state('producer.info', {
+      url:'',
+      templateUrl: 'client/views/producer/producer/producer.view.ng.html'
+    })
+
+
+    .state('producer.edit', {
+      url:'/edit',
+      templateUrl: 'client/views/producer/products/products.ng.html',
+      controller: 'EditProductsController',
+      controllerAs: 'edit'
     });
 
 

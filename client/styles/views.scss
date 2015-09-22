@@ -1,5 +1,5 @@
 $view-transition : $ios-transition-duration;
-$toolbar-width: 64px !default;
+$toolbar-width: 96px !default;
 $view-transition-timing-function-enter: $ios-transition-timing-function !default;
 $view-header-size: 42px !default;
 $view-footer-size: 42px !default;
@@ -36,6 +36,10 @@ $view-footer-size: 42px !default;
 		display: block;
 		text-align: center;
 	}
+}
+
+.view-container{
+	position: relative;
 }
 
 .view {
@@ -107,29 +111,47 @@ $view-footer-size: 42px !default;
 	padding-bottom: 40px;
 }
 
+$toolbar-height: $toolbar-width;
 
 .view-toolbar {
-	position: absolute;
-	bottom:0;
-	left:0;
-	right: 0;
-	height: $toolbar-width;
-	top:auto;
-	background-color: #222;
+	width: $toolbar-width;
+	min-height: 100%;
 
 	.tool{
-		line-height: $toolbar-width;
+		position: relative;
+		height: $toolbar-height;
 		width: $toolbar-width;
-		color: white;
-		font-size: $toolbar-width * 0.5;
 		text-align: center;
-		background-color: #333;
 		transition: 0.4s;
 		cursor: pointer;
 		float:left;
 
+		i{
+			line-height: $toolbar-height;
+			font-size: $toolbar-width * 0.5;
+		}
+
 		&:hover{
-			background-color: #444;
+			background-color: rgba(255,255,255,0.3);
+		}
+
+		&.has-label{
+			padding-bottom: 1.5em;
+
+			i{
+				line-height: $toolbar-height * 0.75;
+				font-size: $toolbar-width * 0.5;
+			}
+		}
+
+		.tool-label{
+			position: absolute;
+			bottom: 0.25em;
+			left:0;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 	}
 }

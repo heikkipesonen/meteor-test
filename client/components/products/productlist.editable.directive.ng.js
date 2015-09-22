@@ -5,6 +5,7 @@ function EditableProductListController (productCalculator) {
 	var vm = this;
 	vm.exposedProduct = null;
 	vm.calculator = productCalculator;
+	vm.columns = ['name','unit', 'price','package_size'];
 }
 
 EditableProductListController.prototype.exposeProduct = function (product) {
