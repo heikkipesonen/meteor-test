@@ -1,4 +1,3 @@
-// Overwrite default underscore in Meteor
 _ = lodash;
 
 angular

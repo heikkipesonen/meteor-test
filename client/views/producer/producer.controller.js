@@ -16,9 +16,6 @@
     $scope.$meteorSubscribe('producers',{_id: $stateParams._id});
     $scope.$meteorSubscribe('products', { producer_id: $stateParams._id });
     vm.products = $scope.$meteorCollection(Products, false);
-
-    console.log(vm.model)
-    console.log(vm.products)
   }
 
 

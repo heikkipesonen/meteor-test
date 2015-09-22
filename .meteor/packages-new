@@ -4,7 +4,26 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
+standard-minifiers
+meteor
+webapp
+ddp
+hot-code-push
+mongo
+jquery
+logging
+reload
+check
+
+static-html
+
+# blaze-html-templates
+# session
+# tracker
+# mobile-experience
+# spacebars
+# random
+# ejson
 
 accounts-google
 

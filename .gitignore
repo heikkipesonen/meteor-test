@@ -1,8 +1,2 @@
-node_modules/
-bower_components/
 .sass-cache/
-.idea/
-.tmp/
-dist/
 .DS_Store
-.meteor
