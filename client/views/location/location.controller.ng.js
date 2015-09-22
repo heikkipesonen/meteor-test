@@ -1,14 +1,14 @@
-(function() {
+(function () {
   'use strict';
 
   angular
-    .module('lahiruoka')
-    .controller('LocationController', LocationController);
+  .module('lahiruoka')
+  .controller('LocationController', LocationController);
 
-  function LocationController($scope, $timeout, $state, $stateParams, $meteor, Products, carts) {
+  function LocationController($scope, $timeout, $state, $stateParams, $meteor, Products, Locations, carts) {
     var vm = this;
 
-    vm.location = $scope.$meteorObject(Locations, {
+    vm.model = $scope.$meteorObject(Locations, {
       _id: $stateParams._id
     }, false);
 
@@ -37,10 +37,11 @@
     $timeout(function () {
       var mbb = document.querySelector('.marker-bounding-box');
       var box = [mbb.offsetWidth, mbb.offsetHeight];
-      $scope.$emit('map.setMarkerCenterOn', vm.location, box);
+      $scope.$emit('map.setMarkerCenterOn', vm.model, box);
     }, 400);
 
-    $scope.$meteorSubscribe('products', $stateParams._id);
+
+    $scope.$meteorSubscribe('products', { location_id: $stateParams._id });
     vm.products = $scope.$meteorCollection(Products);
   }
 

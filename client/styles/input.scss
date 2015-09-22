@@ -1,27 +1,171 @@
 $hilight-color : #d00 !default;
+$input-font-size: 10pt;
+$input-check-size: 10px;
+$input-check-background-size: 20px;
+
+@mixin inputColors($inactiveColor, $activeColor, $inputBackgroundColor){
+	input, textarea{
+		border-color: $inactiveColor;
+		&:hover, &:active, &:focus{
+			border-color: $activeColor;
+		}
+	}
+
+	input:hover + label{
+		color: $activeColor;
+	}
+
+	input:focus + label, input:active + label, input.has-value + label{
+		color: $activeColor;
+	}
+
+	textarea:focus + label, textarea:active + label, textarea.has-value + label{
+		color: $activeColor;
+	}
+
+	input[type="radio"], input[type="checkbox"]{
+		border-color: $activeColor;
+
+		&:before{
+			background-color: $inputBackgroundColor;
+			border-color: $activeColor;
+		}
+
+		&:checked:after{
+			background-color: $activeColor;
+		}
+	}
+}
+
 
 
 .input-container{
 	position: relative;
 	height: 100%;
-	margin-top: 10px;
-	padding-bottom: 20px;
+	margin-top: $grid-gutter-width;
+	margin-bottom: $grid-gutter-width;
+	font-size: $input-font-size;
+	// padding-bottom: 20px;
+	margin-left: $grid-gutter-width/2;
+	margin-right: $grid-gutter-width/2;
+
+	@include inputColors(#444, $hilight-color, white);
+
+	input, textarea{
+		outline:none;
+		border:none;
+		resize:none;
+		background-color: transparent;
+		transition: 0.4s;
+
+		&:hover, &:focus, &:active{
+			outline:none;
+		}
+	}
 
 	input{
-		padding: 15px 0px 5px 0px;
-		width: 100%;
-		border-bottom: 1px solid #444;
+		font-size: $input-font-size;
+		padding: 1.5*$input-font-size 0px 5px 0px;
+	}
 
-		&:hover, &:active, &:focus{
-			border-bottom: 1px solid $hilight-color;
+	.input-tooltip{
+		font-size: $input-font-size * 0.9;
+	}
+
+	input[type="radio"], input[type="checkbox"]{
+
+
+		// visibility: hidden;
+		// display: block;
+		width: 0;
+		margin-right: $input-check-background-size + $grid-gutter-width/2;
+		position: relative;
+
+
+		&:before{
+			position: absolute;;
+			top:50%;
+			left:0;
+			content: "";
+			margin-top: -$input-check-background-size/2;
+			width: $input-check-background-size;
+			height: $input-check-background-size;
+			border: 1px solid;
 		}
 
+		&:checked:after{
+			content: "";
+			position: absolute;
+			top: 50%;
+			margin-top: -$input-check-size/2;
+			left: ($input-check-background-size - $input-check-size) /2;
+			width: $input-check-size;
+			height: $input-check-size;
+		}
+	}
+
+	input[type="radio"]:after,input[type="radio"]:before{
+		border-radius: 50%;
 	}
 
 	label{
+		font-size: inherit;
+		margin:0;
+		transition: 0.3s;
+		font-weight: 400;
+		display: block;
+		width: 100%;
+	}
+
+	input[type="tel"], input[type="email"], input[type="text"], input[type="number"], textarea{
+		width: 100%;
+		border-bottom: 1px solid;
+
+		&:hover, &:active, &:focus{
+			border-bottom: 1px solid;
+		}
+	}
+
+	input[type="tel"] + label, input[type="email"] + label, input[type="text"] + label, input[type="number"] + label, textarea + label{
+		position: absolute;
 		pointer-events: none;
+		top:1.5*$input-font-size;
+		// margin-top: ;
+		left:0;
+		transform-origin: left center;
+	}
+
+	textarea+label{
+		top:0;
+	}
+
+	input:focus + label, input:active + label, input.has-value + label{
+		opacity: 1;
+		top:0;
+		transform: scale(0.8);
+		text-indent: 0px;
+		margin-top: 0;
+	}
+
+	textarea{
+		margin-top: 15px;
+		width: 100%;
+		border-bottom: 1px solid;
+		min-height: 150px;
+		background-color: rgba(255,255,255,0.1);
 	}
 }
+
+.view-content-hilight .input-container{
+	@include inputColors(rgba(255,255,255,0.5), rgba(255,255,255,1), $hilight-color);
+}
+
+.input-tooltip{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
 input:-webkit-autofill{
 	background-color: transparent !important;
 	box-shadow: none;
@@ -41,61 +185,6 @@ input:-webkit-autofill{
 	label{
 		z-index: 0;
 	}
-}
-
-label{
-	margin:0;
-	position: absolute;
-	font-size: 1.2rem;
-	top:50%;
-	margin-top: -10pt;
-	width: 100%;
-	display: block;
-	left:0;
-	transition: 0.3s;
-	transform-origin: left center;
-	font-weight: 400;
-}
-
-textarea+label{
-	top:0;
-}
-
-input:hover + label{
-	color: $hilight-color;
-}
-
-input:focus + label, input:active + label, input.has-value + label, input.ng-dirty + label{
-	top:0;
-	transform: scale(0.8);
-	color: $hilight-color;
-	text-indent: 0px;
-	margin-top: 0;
-}
-
-textarea:focus + label, textarea:active + label, textarea.has-value + label{
-
-	color: $hilight-color;
-
-}
-input, textarea{
-	outline:none;
-	border:none;
-	resize:none;
-	background-color: transparent;
-	transition: 0.4s;
-
-	&:hover, &:focus, &:active{
-		outline:none;
-	}
-}
-
-textarea{
-	margin-top: 15px;
-	width: 100%;
-	border-bottom: 1px solid $hilight-color;
-	min-height: 150px;
-	background-color: rgba(255,255,255,0.1);
 }
 
 

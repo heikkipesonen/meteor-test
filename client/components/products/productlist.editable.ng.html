@@ -1,0 +1,66 @@
+<div class="product-list" layout="column">
+  <div class="product-wrapper" ng-repeat="product in productList.list track by product._id">
+
+    <div class="product"
+      layout="row"
+      layout-align="center center">
+
+      <div class="product-image-wrapper"></div>
+
+      <div class="product-info" flex ng-click="productList.exposeProduct(product)">
+        <h3 class="product-title" ng-bind="product.name + '&nbsp;' + product.package_size + '&nbsp;' + product.unit"></h3>
+        <p class="product-description" ng-bind="product.description"></p>
+        <h4 class="product-property" ng-bind="product.available"></h4>
+        <h3 class="product-price hilight" ng-bind="productList.calculator.getPrice(product) + '&nbsp;€'"></h3>
+      </div>
+    </div>
+
+    <div class="row product-edit" ng-if="productList.isExposed(product)">
+      <div class="input-container">
+        <input type="text"  ng-class="{'has-value' : product.name}" ng-model="product.name">
+        <label>Name</label>
+        <p class="input-tooltip">Tuotenimike</p>
+      </div>
+
+      <div class="input-container">
+        <input type="text"  ng-class="{'has-value' : product.description}" ng-model="product.description">
+        <label>Description</label>
+        <p class="input-tooltip">Lyhyt kuvaus tuottesta</p>
+      </div>
+
+      <div layout="row">
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : product.unit}" ng-model="product.unit">
+          <label>Unit</label>
+          <p class="input-tooltip">Myyntiyksikkö (kappale, kg, litra..)</p>
+        </div>
+
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : product.price}" ng-model="product.price">
+          <label>Price/unit</label>
+          <p class="input-tooltip">Hinta € / {{product.unit}}</p>
+        </div>
+      </div>
+
+      <div layout="row">
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : product.package_size}" ng-model="product.package_size">
+          <label>Package size</label>
+          <p class="input-tooltip">Myyntipakkauksen koko {{product.unit}}</p>
+        </div>
+
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : product.price}" ng-model="product.price">
+          <label>Package cost</label>
+          <p class="input-tooltip">Myyntipakkauksen hinta € / {{product.package_size + '&nbsp;' + product.unit}}</p>
+        </div>
+      </div>
+
+
+      <div class="input-container" flex>
+        <input type="text"  ng-class="{'has-value' : product.available}" ng-model="product.available">
+        <label>Available</label>
+      </div>
+    </div>
+   </div>
+ </div>

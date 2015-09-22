@@ -6,15 +6,15 @@
 	<div class="view view-has-footer" scroll-y>
 		<div class="view-header" ng-click="location.back()"></div>
 
-
+			<div class="view-shadow view-content-background" layout="column">
 				<!-- <div class="view-text-container view-content-background view-content" layout="column" layout-align="center"> -->
-					<div class="view-title-wrapper view-shadow view-content-background" layout="column" layout-align="center">
-						<div class="location-title-image-container"></div>
-						<p class="subtitle" ng-bind="::location.location.type"></p>
-						<h2 class="view-title text-strong text-uppercase" ng-bind="::location.location.name"></h2>
-						<!-- <h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.selectedDay.start_datetime | date : 'dd.MM.yyyy'"></h2> -->
-					</div>
-				<!-- </div> -->
+				<div class="view-title" layout="column" layout-align="center">
+					<div class="location-title-image-container"></div>
+					<p class="subtitle" ng-bind="::location.model.type"></p>
+					<h2 class="text-strong text-uppercase" ng-bind="::location.model.name"></h2>
+					<!-- <h2 class="view-title text-center hilight text-strong text-uppercase" ng-bind="location.selectedDay.start_datetime | date : 'dd.MM.yyyy'"></h2> -->
+				</div>
+			<!-- </div> -->
 
 				<product-list class="list-products view-content-background " ng-model="location.products" cart="location.cart"></product-list>
 
@@ -32,7 +32,7 @@
 				</div>
  -->
 
-
+			</div>
 
 	</div>
 

@@ -10,10 +10,6 @@ $product-info-width : 82px;
 	padding-left: 40px;
 	padding-right: 40px;
 
-	*{
-		pointer-events: none;
-	}
-
 	h3{
 		font-size: 1.3rem;
 		font-weight: 800;
@@ -40,6 +36,25 @@ $product-info-width : 82px;
 	}
 }
 
+.product-edit{
+	z-index: 1;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	position: relative;
+}
+
+
+.top-triangle:before{
+	position: absolute;
+	top:-10px;
+	left:50%;
+	content: "";
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #eee;
+}
 
 .product-info{
 	padding-left: 20px;

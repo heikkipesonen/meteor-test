@@ -11,9 +11,7 @@ angular.module('lahiruoka.server').run(function (Products) {
     }
   });
 
-  Meteor.publish('products', function (locationId) {
-    return Products.find({
-      location_id: locationId
-    });
+  Meteor.publish('products', function (params) {
+    return Products.find(params);
   });
 });

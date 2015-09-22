@@ -11,9 +11,7 @@ angular.module('lahiruoka.server').run(function (Producers) {
     }
   });
 
-  Meteor.publish('producers', function (producerId) {
-    return Producers.find({
-      _id: producerId
-    });
+  Meteor.publish('producers', function (params) {
+    return Producers.find(params);
   });
 });

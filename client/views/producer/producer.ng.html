@@ -1,0 +1,61 @@
+<div class="view view-translate" layout="row">
+
+	<!-- <div class="view-header marker-bounding-box" ng-click="location.back()"></div> -->
+	<!-- <div class="view-background-gradient" flex></div> -->
+<!--
+	<div class="view-content" scroll-y layout="column">
+		<div class="view-header" ng-click="location.back()"></div>
+ -->
+		<div class="view-content-hilight" layout="column" flex="35" scroll-y>
+			<div class="view-title" layout="column" layout-align="center">
+				<!-- <div class="location-title-image-container"></div> -->
+				<p class="subtitle" ng-bind="producer.model.type"></p>
+				<h2 class="text-strong text-uppercase" ng-bind="producer.model.name"></h2>
+			</div>
+			<div class="product-edit" flex>
+				<div class="input-container" flex layout="row">
+					<label flex><input type="radio" name="pere" ng-model="producer.pere">Pere</label>
+					<label flex><input type="radio" name="pere" ng-model="producer.pere">Perde</label>
+					<label flex><input type="radio" name="pere" ng-model="producer.pere">Perse</label>
+				</div>
+
+	      <div class="input-container">
+	        <input type="text"  ng-class="{'has-value' : producer.model.name}" ng-model="producer.model.name">
+	        <label>Name</label>
+	      </div>
+	      <div class="input-container">
+	        <input type="text"  ng-class="{'has-value' : producer.model.type}" ng-model="producer.model.type">
+	        <label>Tyyppi</label>
+	      </div>
+	      <div class="input-container">
+	        <input type="text"  ng-class="{'has-value' : producer.model.description}" ng-model="producer.model.description">
+	        <label>Description</label>
+	      </div>
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : producer.model.position.address}" ng-model="producer.model.position.address">
+          <label>Osoite</label>
+        </div>
+
+	      <div layout="row">
+	        <div class="input-container" flex>
+	          <input type="text"  ng-class="{'has-value' : producer.model.position.lat}" ng-model="producer.model.position.lat">
+	          <label>Pituus</label>
+	        </div>
+	        <div class="input-container" flex>
+	          <input type="text"  ng-class="{'has-value' : producer.model.position.lng}" ng-model="producer.model.position.lng">
+	          <label>Leveys</label>
+	        </div>
+
+	      </div>
+	    </div>
+		</div>
+		<div class="view-content-background" flex scroll-y>
+			<div editable-product-list ng-model="producer.products"></div>
+		</div>
+<!-- 			</div>
+
+
+
+	</div> -->
+
+</div>
