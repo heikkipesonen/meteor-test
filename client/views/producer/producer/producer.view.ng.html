@@ -1,33 +1,48 @@
-<div class="view view-translate" scroll-y>
-	<div layout="column" class="list-padding ">
-    <div class="input-container">
-      <input type="text"  ng-class="{'has-value' : producer.model.name}" ng-model="producer.model.name">
-      <label>Name</label>
-    </div>
-    <div class="input-container">
-      <input type="text"  ng-class="{'has-value' : producer.model.type}" ng-model="producer.model.type">
-      <label>Tyyppi</label>
-    </div>
-    <div class="input-container">
-      <textarea  ng-class="{'has-value' : producer.model.description}" ng-model="producer.model.description"></textarea>
-      <label>Description</label>
-    </div>
-    <div class="input-container" flex>
-      <input type="text"  ng-class="{'has-value' : producer.model.position.address}" ng-model="producer.model.position.address">
-      <label>Osoite</label>
-    </div>
-
-		<button ng-click="producer.model.save()">SAVE!</button>
-
-<!--     <div layout="row">
+<div class="view view-translate-side" scroll-y>
+  <div layout="row" layout-align="start center">
+  	<div layout="column" class="list-padding view-content" flex>
       <div class="input-container" flex>
-        <input type="text"  ng-class="{'has-value' : producer.model.position.lat}" ng-model="producer.model.position.lat">
-        <label>Pituus</label>
+        <input type="text"  ng-class="{'has-value' : producer.model.name}" ng-model="producer.model.name">
+        <label>Name</label>
       </div>
       <div class="input-container" flex>
-        <input type="text"  ng-class="{'has-value' : producer.model.position.lng}" ng-model="producer.model.position.lng">
-        <label>Leveys</label>
+        <input type="text"  ng-class="{'has-value' : producer.model.type}" ng-model="producer.model.type">
+        <label>Tyyppi</label>
       </div>
-    </div> -->
-	</div>
+      <div class="input-container" flex>
+        <textarea  ng-class="{'has-value' : producer.model.description}" ng-model="producer.model.description"></textarea>
+        <label>Description</label>
+      </div>
+
+      <div class="input-container" flex>
+        <input type="text"  ng-class="{'has-value' : producer.model.position.address}" ng-model="producer.model.position.address">
+        <label>Katuosoite</label>
+      </div>
+
+      <div layout="row">
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : producer.model.position.city}" ng-model="producer.model.position.city">
+          <label>Kaupunki</label>
+        </div>
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : producer.model.position.postcode}" ng-model="producer.model.position.postcode">
+          <label>Postinumero</label>
+        </div>
+
+      </div>
+
+  		<button ng-click="producer.model.save()">SAVE!</button>
+
+  <!--     <div layout="row">
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : producer.model.position.lat}" ng-model="producer.model.position.lat">
+          <label>Pituus</label>
+        </div>
+        <div class="input-container" flex>
+          <input type="text"  ng-class="{'has-value' : producer.model.position.lng}" ng-model="producer.model.position.lng">
+          <label>Leveys</label>
+        </div>
+      </div> -->
+  	</div>
+  </div>
 </div>

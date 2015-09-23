@@ -15,8 +15,6 @@
 	background-color: $view-background-color;
 }
 
-
-
 .view-content-hilight{
 	background-color: $hilight-color;
 	color: $hilight-background-text;
@@ -41,14 +39,13 @@
 }
 
 
-
-[layout]{
-	display: flex;
-	flex-direction: column;
-}
-
-[layout="row"]{
-	flex-direction: row;
+@mixin flexSize($maxThing){
+	@for $i from 1 through 20 {
+		[flex="#{$i * 5}"] {
+			flex: 1;
+			max-#{$maxThing}: $i*5%;
+		}
+	}
 }
 
 [flex]{
@@ -59,18 +56,60 @@
 	flex-wrap: wrap;
 }
 
-@for $i from 1 through 20 {
-	[layout="column"] [flex="#{$i * 5}"] {
-		flex: 1;
-		max-height: $i*5%;
-	}
-
-	[layout="row"] [flex="#{$i * 5}"] {
-		flex: 1;
-		max-width: $i*5%;
-	}
-
+[layout]{
+	display: flex;
+	flex-direction: column;
+	@include flexSize('height');
 }
+
+[layout="row"]{
+	flex-direction: row;
+	@include flexSize('width');
+}
+
+
+@each $breakpoint in $view-breakpoints {
+	@media (max-width: nth($breakpoint,2) ){
+		[layout-lt-#{nth($breakpoint,1)}]{
+			flex-direction: row;
+			@include flexSize('height');
+		}
+
+		[layout-lt-#{nth($breakpoint,1)}="column"]{
+			flex-direction: column;
+			@include flexSize('width');
+		}
+	}
+
+	@media (min-width: nth($breakpoint,2) ){
+		[layout-gt-#{nth($breakpoint,1)}]{
+			flex-direction: row;
+			@include flexSize('height');
+		}
+
+		[layout-gt-#{nth($breakpoint,1)}="column"]{
+			flex-direction: column;
+			@include flexSize('width');
+		}
+	}
+}
+
+
+
+
+
+// @for $i from 1 through 20 {
+
+// 	[layout="column"] [flex="#{$i * 5}"] {
+// 		flex: 1;
+// 		max-height: $i*5%;
+// 	}
+
+// 	[layout="row"] [flex="#{$i * 5}"] {
+// 		flex: 1;
+// 		max-width: $i*5%;
+// 	}
+// }
 
 [text-fit]{
 	display: inline-block;

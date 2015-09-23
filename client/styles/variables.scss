@@ -25,7 +25,14 @@ $view-footer-bar-background: $view-background-color;
 $list-background-color: $view-background-color;
 $list-stripe-color: darken($view-background-color, 10);
 
-
+$screen-xs: 600px;
 $screen-sm: 800px;
 $screen-md: 1000px;
 $screen-lg: 1200px;
+
+$view-breakpoints : (
+	('xs', $screen-xs),
+	('sm', $screen-sm),
+	('md', $screen-md),
+	('lg', $screen-lg)
+);

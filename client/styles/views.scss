@@ -89,7 +89,10 @@ $view-footer-size: 42px !default;
 	}
 }
 
-
+.view-content{
+	max-width: 800px;
+	margin:auto;
+}
 
 
 .view-background-image{
@@ -196,7 +199,30 @@ $toolbar-height: $toolbar-width;
 		z-index: 1;
 	}
 
+	&.ng-animate>.view-translate-side{
+		transition: $view-transition !important;
+		transition-timing-function: $view-transition-timing-function-enter;
+	}
 
+	&.ng-enter>.view-translate-side{
+		z-index: 2;
+		transform: translate3d(100%,0,0) !important;
+	}
+
+	&.ng-enter-active>.view-translate-side{
+		z-index: 2;
+		transform: translate3d(0,0,0) !important;
+	}
+
+	&.ng-leave>.view-translate-side{
+		transform: translate3d(0,0,0) !important;
+		z-index: 1;
+	}
+
+	&.ng-leave-active>.view-translate-side{
+		transform: translate3d(-100%,0,0) !important;
+		z-index: 1;
+	}
 
 
 

@@ -13,7 +13,7 @@
       <p class="input-tooltip">Lyhyt kuvaus tuottesta</p>
     </div>
 
-    <div layout="row">
+    <div layout="row" layout-lt-sm="column">
       <div class="input-container" flex>
         <input type="text"  ng-class="{'has-value' : product.category}" ng-model="product.category">
         <label>Category</label>
@@ -26,9 +26,14 @@
       </div>
     </div>
 
-    <div layout="row">
+    <div layout="row" layout-lt-sm="column">
       <div class="input-container" flex>
-        <input type="text"  ng-class="{'has-value' : product.unit}" ng-model="product.unit">
+        <select type="select"  ng-class="{'has-value' : product.unit}" ng-model="product.unit">
+          <option value="kg">kg</option>
+          <option value="l">litra</option>
+          <option value="g">gramma</option>
+          <option value="g">kpl</option>
+        </select>
         <label>Unit</label>
         <p class="input-tooltip">Myyntiyksikkö (kappale, kg, litra..)</p>
       </div>
@@ -38,6 +43,9 @@
         <label>Price/unit</label>
         <p class="input-tooltip">Hinta € / {{product.unit}}</p>
       </div>
+    </div>
+
+    <div layout="row" layout-lt-sm="column">
 
       <div class="input-container" flex>
         <input type="text"  ng-class="{'has-value' : product.package_size}" ng-model="product.package_size">

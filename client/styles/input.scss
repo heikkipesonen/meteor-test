@@ -51,22 +51,27 @@ $input-check-background-size: 20px;
 
 	@include inputColors(#444, $hilight-color, white);
 
-	input, textarea{
+	select{
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+
+	input, textarea, select{
+		display: block;
 		outline:none;
 		border:none;
 		resize:none;
 		background-color: transparent;
 		transition: 0.4s;
+		font-size: $input-font-size;
+		border-radius: 0;
+		padding: 1.5*$input-font-size 0px 5px 0px;
 
 		&:hover, &:focus, &:active{
 			outline:none;
 		}
 	}
 
-	input{
-		font-size: $input-font-size;
-		padding: 1.5*$input-font-size 0px 5px 0px;
-	}
 
 	.input-tooltip{
 		font-size: $input-font-size * 0.9;
@@ -117,7 +122,12 @@ $input-check-background-size: 20px;
 		width: 100%;
 	}
 
-	input[type="tel"], input[type="email"], input[type="text"], input[type="number"], textarea{
+	input[type="tel"],
+	input[type="email"],
+	input[type="text"],
+	input[type="number"],
+	textarea,
+	select{
 		width: 100%;
 		border-bottom: 1px solid;
 
@@ -126,7 +136,12 @@ $input-check-background-size: 20px;
 		}
 	}
 
-	input[type="tel"] + label, input[type="email"] + label, input[type="text"] + label, input[type="number"] + label, textarea + label{
+	select + label,
+	input[type="tel"] + label,
+	input[type="email"] + label,
+	input[type="text"] + label,
+	input[type="number"] + label,
+	textarea + label{
 		position: absolute;
 		pointer-events: none;
 		top:1.5*$input-font-size;
@@ -135,7 +150,7 @@ $input-check-background-size: 20px;
 		transform-origin: left center;
 	}
 
-	textarea+label{
+	textarea+label, select+label{
 		top:0;
 	}
 
