@@ -11,15 +11,19 @@ $input-check-background-size: 20px;
 		}
 	}
 
-	input:hover + label{
+	input:hover + label, select:hover + label{
 		color: $activeColor;
 	}
 
-	input:focus + label, input:active + label, input.has-value + label{
-		color: $activeColor;
-	}
-
-	textarea:focus + label, textarea:active + label, textarea.has-value + label{
+	input:focus + label,
+	input:active + label,
+	input.has-value + label,
+	select:focus + label,
+	select:active + label,
+	select.has-value + label,
+	textarea:focus + label,
+	textarea:active + label,
+	textarea.has-value + label{
 		color: $activeColor;
 	}
 
@@ -150,11 +154,16 @@ $input-check-background-size: 20px;
 		transform-origin: left center;
 	}
 
-	textarea+label, select+label{
+	textarea+label{
 		top:0;
 	}
 
-	input:focus + label, input:active + label, input.has-value + label{
+	input:focus + label,
+	input:active + label,
+	input.has-value + label,
+	select:focus + label,
+	select:active + label,
+	select.has-value + label{
 		opacity: 1;
 		top:0;
 		transform: scale(0.8);
@@ -212,10 +221,24 @@ input:-webkit-autofill{
 	outline: none;
 	border:none;
 	transition: 0.4s;
+	padding: $grid-gutter-width/2 $grid-gutter-width;
 
 	&:hover, &:focus, &:active{
 		outline:none;
 		border:none;
 		// background-color: lighten($hilight-color, 10);
+	}
+
+	color: $hilight-color;
+	background-color: transparent;
+	border-color: $hilight-color;
+	margin: $grid-gutter-width/2;
+
+	&.button-ghost{
+		border: 2px solid;
+
+		&:hover, &:focus, &:active{
+			border: 2px solid;
+		}
 	}
 }

@@ -42,6 +42,13 @@ $product-info-width : 82px;
 	border-bottom: 2px dotted #ddd;
 }
 
+.top-triangle{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	height: 0;
+}
 
 .top-triangle:before{
 	position: absolute;
@@ -69,7 +76,9 @@ $product-info-width : 82px;
 
 .product-wrapper{
 	position: relative;
-
+	width: 100%;
+	max-width: 800px;
+	margin:auto;
 	// &:first-of-type{
 	// 	border-top: 1px solid $hilight-color;
 	// }
@@ -81,6 +90,12 @@ $product-info-width : 82px;
 	 // &:nth-child(even) .product-info{
 	 // 	background-color: lighten($hilight-color, 10);
 	 // }
+}
+
+
+.product-edit-wrapper{
+	background-color: #eee;
+	padding: $grid-gutter-width;
 }
 
 

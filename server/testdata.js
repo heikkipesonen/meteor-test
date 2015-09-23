@@ -1,10 +1,12 @@
-angular.module('lahiruoka.server').run(function (Locations, Products, Producers, Users, chance) {
+angular.module('lahiruoka.server').run(function (Categories, Locations, Products, Producers, Users, chance, CATEGORIES) {
   Meteor.methods({
     'createTestData': function () {
       this.unblock();
       createTestData();
     }
   });
+
+  var _ = lodash;
 
   var randomPosition = function () {
     return {
@@ -14,16 +16,40 @@ angular.module('lahiruoka.server').run(function (Locations, Products, Producers,
     };
   };
 
+
   var createTestData = function () {
     Locations.remove({});
     Products.remove({});
     Producers.remove({});
+    Categories.remove({});
+
     Users.remove({
       'services.test': true
     });
 
+    var rootCategories = _.filter(CATEGORIES, {parent: null});
+    var categoryIds = {};
     var producerIds = [];
     var userIds = [];
+
+
+    _.forEach(rootCategories, function (category) {
+      var subcategories = _.filter(CATEGORIES, {parent: ''+category.id});
+      var subCategoryIds = _.map(subcategories, function (subcategory) {
+        return Categories.insert({
+          name: subcategory.name
+        });
+      });
+
+      var cid = Categories.insert({
+        name: category.name,
+        subcategories: subCategoryIds
+      });
+
+
+      categoryIds[cid] = subCategoryIds;
+    });
+
 
     _.times(50, function () {
       userIds.push(Users.insert({
@@ -83,19 +109,24 @@ angular.module('lahiruoka.server').run(function (Locations, Products, Producers,
       active: active
     });
 
+    var categoryIdKeys = _.keys(categoryIds);
      _.times(chance.integer({min: 1, max: 10}), function () {
-        Products.insert({
+        var product = {
           location_id: locationId,
           producer_id: _.sample(producerIds),
           name: chance.sentence({words: 2}),
           description: chance.paragraph({sentences:1}),
-          category: _.sample(Products.CATEGORIES),
+          category: _.sample(categoryIdKeys),
           price: chance.floating({min: 0.5, max: 10}),
           unit: _.sample(Products.UNITS),
           available: chance.integer({min: 1, max: 10}),
           package_size: chance.integer({min:1, max: 20}),
           min_purchase: chance.integer({min:1, max: 10})
-        });
+        };
+
+
+        product.subcategory = _.sample( categoryIds[product.category] );
+        Products.insert(product);
       });
     });
   };

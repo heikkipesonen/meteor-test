@@ -1,7 +1,7 @@
 angular.module('lahiruoka.common').service('Products', function () {
   Products = new Mongo.Collection('products');
 
-  Products.CATEGORIES = ['meat', 'fish', 'chicken', 'vegetable', 'eggs', 'seasoning'];
+  // this is shit
   Products.UNITS = ['kg', 'l', 'pcs', 'g'];
 
   Products.attachSchema({
@@ -18,8 +18,11 @@ angular.module('lahiruoka.common').service('Products', function () {
       type: String
     },
     category: {
+      type: String
+    },
+    subcategory: {
       type: String,
-      allowedValues: Products.CATEGORIES
+      optional:true
     },
     price: {
       type: Number,

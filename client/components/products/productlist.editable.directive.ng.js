@@ -1,11 +1,15 @@
 'use strict';
 
 
-function EditableProductListController (productCalculator) {
+function EditableProductListController ($scope, productCalculator, Categories) {
 	var vm = this;
 	vm.exposedProduct = null;
 	vm.calculator = productCalculator;
 	vm.columns = ['name','unit', 'price','package_size'];
+
+  $scope.$meteorSubscribe('categories');
+  vm.categories = $scope.$meteorCollection(Categories);
+
 }
 
 EditableProductListController.prototype.exposeProduct = function (product) {

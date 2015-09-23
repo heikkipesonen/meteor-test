@@ -1,0 +1,396 @@
+[
+	{
+		"id":1,
+		"parent":null,
+		"name":"Hedelmät"
+	},
+	{
+		"parent":1,
+		"name":"Hedelmäsäilykkeet"
+	},
+	{
+		"parent":1,
+		"name":"Marjat"
+	},
+	{
+		"parent":1,
+		"name":"Mehujuomat"
+	},
+	{
+		"parent":1,
+		"name":"Muut hedelmät"
+	},
+	{
+		"parent":1,
+		"name":"Omenahedelmät"
+	},
+	{
+		"parent":1,
+		"name":"Sitrushedelmät"
+	},
+	{
+		"parent":1,
+		"name":"Täysmehut"
+	},
+	{
+		"parent":1,
+		"name":"Kasvikset"
+	},
+
+	{
+		"id":2,
+		"parent":null,
+		"name":"Juuri- ja mukulakasvit"
+	},
+
+	{
+		"parent":2,
+		"name":"Kaalit"
+	},
+	{
+		"parent":2,
+		"name":"Kasvissäilykkeet"
+	},
+	{
+		"parent":2,
+		"name":"Lehtivihannekset"
+	},
+	{
+		"parent":2,
+		"name":"Sienet"
+	},
+	{
+		"parent":2,
+		"name":"Sipulikasvikset"
+	},
+	{
+		"parent":2,
+		"name":"Vihanneshedelmät"
+	},
+	{
+		"parent":2,
+		"name":"Palkokasvit ja pähkinät"
+	},
+
+	{
+		"id":3,
+		"parent":null,
+		"name":"Palkokasvit"
+	},
+	{
+		"parent":3,
+		"name":"Pähkinät, siemenet"
+	},
+	{
+		"parent":3,
+		"name":"Soijavalmisteet"
+	},
+
+	{
+		"id":4,
+		"parent":null,
+		"name":"Perunat"
+	},
+	{
+		"parent":4,
+		"name":"Peruna"
+	},
+	{
+		"parent":4,
+		"name":"Perunavalmisteet"
+	},
+
+	{
+		"id":5,
+		"parent":null,
+		"name":"Viljat"
+	},
+	{
+		"name":"Kaura, ohra",
+		"parent":5
+	},
+	{
+		"name":"Kuiva leipä",
+		"parent":5
+	},
+	{
+		"name":"Muu vilja",
+		"parent":5
+	},
+	{
+		"name":"Pasta, makaroni",
+		"parent":5
+	},
+	{
+		"name":"Riisi",
+		"parent":5
+	},
+	{
+		"name":"Ruis",
+		"parent":5
+	},
+	{
+		"name":"Tärkkelykset",
+		"parent":5
+	},
+	{
+		"name":"Vehnä",
+		"parent":5
+	},
+	{
+		"id":6,
+		"name":"Maito",
+		"parent":null
+	},
+	{
+		"name":"Hapanmaitotuotteet",
+		"parent":6
+	},
+	{
+		"name":"Juusto",
+		"parent":6
+	},
+	{
+		"name":"Jäätelö",
+		"parent":6
+	},
+	{
+		"name":"Kerma/ creme",
+		"parent":6
+	},
+	{
+		"name":"Maidot",
+		"parent":6
+	},
+	{
+		"name":"Muu maito",
+		"parent":6
+	},
+	{
+		"name":"Ravintorasvat",
+		"parent":6
+	},
+	{
+		"id":7,
+		"name":"Eläinrasva",
+		"parent":null
+	},
+	{
+		"parent":7,
+		"name":"Margariini ja rasvalevite <55%"
+	},
+	{
+		"parent":7,
+		"name":"Margariini ja rasvalevitteet >55%"
+	},
+	{
+		"parent":7,
+		"name":"Muu rasva, rasvavalmisteet"
+	},
+	{
+		"parent":7,
+		"name":"Ruoanvalmistus- ja teollisuusrasva"
+	},
+	{
+		"parent":7,
+		"name":"Voi, maitorasvaseokset"
+	},
+	{
+		"parent":7,
+		"name":"Öljy"
+	},
+	{
+		"id":8,
+		"parent":null,
+		"name":"Muna"
+	},
+	{
+		"name":"Kananmunat",
+		"parent":8
+	},
+	{
+		"name":"Muiden lintujen munat",
+		"parent":8
+	},
+	{
+		"id":10,
+		"parent":null,
+		"name":"Kala"
+	},
+	{
+		"name":"Kalat",
+		"parent":10
+	},
+	{
+		"name":"Kalavalmisteet",
+		"parent":10
+	},
+	{
+		"name":"Äyriäiset ja nilviäiset",
+		"parent":10
+	},
+	{
+		"id":11,
+		"name":"Lihat",
+		"parent":null
+	},
+	{
+		"name":"Elimet",
+		"parent":11
+	},
+	{
+		"name":"Kanalinnut",
+		"parent":11
+	},
+	{
+		"name":"Lammas",
+		"parent":11
+	},
+	{
+		"name":"Lihavalmisteet",
+		"parent":11
+	},
+	{
+		"name":"Makkarat",
+		"parent":11
+	},
+	{
+		"name":"Naudanliha",
+		"parent":11
+	},
+	{
+		"name":"Riista",
+		"parent":11
+	},
+	{
+		"name":"Sianliha",
+		"parent":11
+	},
+	{
+		"id":12,
+		"name":"Juomat",
+		"parent":null
+	},
+	{
+		"name":"Kahvi",
+		"parent":12
+	},
+	{
+		"name":"Tee",
+		"parent":12
+	},
+	{
+		"name":"Vesi",
+		"parent":12
+	},
+	{
+		"name":"Virvoitusjuomat",
+		"parent":12
+	},
+	{
+		"id":13,
+		"name":"Alkoholijuomat",
+		"parent":null
+	},
+	{
+		"name":"Muut alkoholijuomat",
+		"parent":13
+	},
+	{
+		"name":"Oluet",
+		"parent":13
+	},
+	{
+		"name":"Viinit",
+		"parent":13
+	},
+	{
+		"name":"Väkevät viinat",
+		"parent":13
+	},
+	{
+		"id":14,
+		"name":"Sokerit ja makeiset",
+		"parent":null
+	},
+	{
+		"name":"Makeiset",
+		"parent":14
+	},
+	{
+		"name":"Sekalaiset makeat",
+		"parent":14
+	},
+	{
+		"name":"Sokerit, siirapit",
+		"parent":14
+	},
+	{
+		"name":"Suklaa",
+		"parent":14
+	},
+	{
+		"id":15,
+		"name":"Mausteet",
+		"parent":15
+	},
+	{
+		"name":"Kuivatut mausteet",
+		"parent":15
+	},
+	{
+		"name":"Kuivatut yrtit",
+		"parent":15
+	},
+	{
+		"name":"Maustekastikkeet",
+		"parent":15
+	},
+	{
+		"id":16,
+		"name":"Valmistusaineet",
+		"parent":null
+	},
+	{
+		"name":"Makeutusaineet",
+		"parent":16
+	},
+	{
+		"name":"Suolat",
+		"parent":16
+	},
+	{
+		"name":"Valmistuksen apuaineet",
+		"parent":16
+	},
+	{
+		"id":17,
+		"name":"Teolliset ruoat",
+		"parent":null
+	},
+	{
+		"name":"Naposteltavat",
+		"parent":17
+	},
+	{
+		"id":18,
+		"name":"Ravintovalmisteet",
+		"parent":null
+	},
+	{
+		"name":"Kliiniset ravintovalmisteet",
+		"parent":18
+	},
+	{
+		"name":"Lastenruoat",
+		"parent":18
+	},
+	{
+		"name":"Äidinmaitokorvikkeet ja äidinmaito",
+		"parent":18
+	}
+]
+
+
+
+

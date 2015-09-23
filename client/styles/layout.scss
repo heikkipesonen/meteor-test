@@ -42,7 +42,7 @@
 @mixin flexSize($maxThing){
 	@for $i from 1 through 20 {
 		[flex="#{$i * 5}"] {
-			flex: 1;
+			flex: $i/20;
 			max-#{$maxThing}: $i*5%;
 		}
 	}
@@ -56,40 +56,105 @@
 	flex-wrap: wrap;
 }
 
-[layout]{
+[layout="column"]{
 	display: flex;
 	flex-direction: column;
-	@include flexSize('height');
 }
 
 [layout="row"]{
+	display: flex;
 	flex-direction: row;
-	@include flexSize('width');
 }
 
 
 @each $breakpoint in $view-breakpoints {
 	@media (max-width: nth($breakpoint,2) ){
+
+		@for $i from 1 through 20 {
+			[flex-lt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+				flex: $i/20;
+			}
+		}
+
+		[layout="row"]{
+			@for $i from 1 through 20 {
+				>[flex-lt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-height: $i * 5%;
+				}
+			}
+		}
+
+		[layout="column"]{
+			@for $i from 1 through 20 {
+				>[flex-lt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-width: $i * 5%;
+				}
+			}
+		}
+
 		[layout-lt-#{nth($breakpoint,1)}]{
 			flex-direction: row;
-			@include flexSize('height');
+
+			@for $i from 1 through 20 {
+				[flex-lt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-width: $i * 5%;
+				}
+			}
 		}
 
 		[layout-lt-#{nth($breakpoint,1)}="column"]{
 			flex-direction: column;
-			@include flexSize('width');
+
+			@for $i from 1 through 20 {
+				[flex-lt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-height: $i * 5%;
+				}
+			}
 		}
 	}
 
 	@media (min-width: nth($breakpoint,2) ){
+		@for $i from 1 through 20 {
+			[flex-gt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+				flex: $i/20;
+			}
+		}
+
+		[layout="row"]{
+			@for $i from 1 through 20 {
+				>[flex-gt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-height: $i * 5%;
+				}
+			}
+		}
+
+		[layout="column"]{
+			@for $i from 1 through 20 {
+				>[flex-gt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-width: $i * 5%;
+				}
+			}
+		}
+
 		[layout-gt-#{nth($breakpoint,1)}]{
 			flex-direction: row;
-			@include flexSize('height');
+
+			@for $i from 1 through 20 {
+				[flex-gt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-width: $i * 5%;
+				}
+			}
 		}
 
 		[layout-gt-#{nth($breakpoint,1)}="column"]{
 			flex-direction: column;
-			@include flexSize('width');
+
+			@for $i from 1 through 20 {
+				[flex-gt-#{nth($breakpoint,1)}="#{$i * 5}"] {
+					max-height: $i * 5%;
+				}
+			}
+
 		}
 	}
 }
@@ -134,4 +199,12 @@
 
 [layout-align $= "center"]{
 	justify-content: center;
+}
+
+[layout-align $= "start"]{
+	justify-content: flex-start;
+}
+
+[layout-align $= "end"]{
+	justify-content: flex-end;
 }
